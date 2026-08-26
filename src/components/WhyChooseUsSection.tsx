@@ -199,7 +199,7 @@ const WhyChooseUsSection = () => {
       `}</style>
 
       <section className="why-choose-us-section">
-        <div className="container-fluid px-4 px-lg-5">
+        <div className="container">
           {/* Header Row: Title & Controls */}
           <div className="row align-items-end justify-content-between gy-4">
             <div className="col-12 col-lg-7">
