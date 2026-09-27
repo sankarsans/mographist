@@ -1,9 +1,10 @@
-import Header from "./Header";
-import ContactSection from "./ContactSection";
-import Footer from "./Footer";
-import Home from "./Home";
+import Header from "./Pages/Common/Header";
+import ContactSection from "./Pages/Common/ContactSection";
+import Footer from "./Pages/Common/Footer";
+import Home from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
-import About from "./About";
+import About from "./Pages/About/About";
+import Work from "./Pages/Work/Work";
 
 export default function App() {
   return (
@@ -14,8 +15,9 @@ export default function App() {
         {/* <Route path="/works" element={<Works />} />
         <Route path="/services" element={<Services />} /> */}
         <Route path="/about" element={<About />} />
+        <Route path="/works" element={<Work />} />
       </Routes>
-      <ContactSection />
+      {/* <ContactSection /> */}
 
       <Footer />
     </div>

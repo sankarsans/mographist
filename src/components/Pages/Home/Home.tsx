@@ -4,6 +4,7 @@ import CreativeProcess from "./CreativeProcess";
 import TestimonialsSection from "./TestimonialsSection";
 import FAQSection from "./FAQSection";
 import Banner from "./Banner";
+import ContactSection from "../Common/ContactSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <CreativeProcess />
       <TestimonialsSection />
       <FAQSection />
+      <ContactSection />
     </div>
   );
 }

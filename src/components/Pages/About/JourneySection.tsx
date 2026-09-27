@@ -1,9 +1,11 @@
-import React from "react";
+import journey1 from "../../../assets/journey1.png";
+import journey2 from "../../../assets/journey2.png";
+import arrow from "../../../assets/arrow.png";
 
 const stats = [
-  { value: "05+", label: "Happy clients" },
+  { value: "30+", label: "Happy clients" },
   { value: "20+", label: "Projects delivered" },
-  { value: "10+", label: "Years of experience" },
+  { value: "25+", label: "Years of experience" },
 ];
 
 const StoryJourneySection = () => {
@@ -13,7 +15,6 @@ const StoryJourneySection = () => {
         .story-journey-section {
           background-color: #ffffff;
           padding: 6rem 0;
-          font-family: system-ui, -apple-system, sans-serif;
         }
 
         
@@ -25,21 +26,6 @@ const StoryJourneySection = () => {
         }
 
         /* Smooth Pill-Rounded Image */
-        .story-visual-card {
-          width: 100%;
-          height: 230px;
-          border-radius: 36px;
-          overflow: hidden;
-          margin-bottom: 2.25rem;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-        }
-
-        .story-visual-card img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
 
         /* Paragraphs */
         .story-desc {
@@ -50,33 +36,10 @@ const StoryJourneySection = () => {
         }
 
         /* CTA Button */
-        .btn-start-story {
-          background-color: #3b28cc;
-          color: #ffffff;
-          font-size: 0.82rem;
-          font-weight: 600;
-          border-radius: 12px;
-          padding: 0.75rem 1.4rem;
-          border: none;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          text-decoration: none;
-          transition: background-color 0.2s ease, transform 0.15s ease;
-        }
-
-        .btn-start-story:hover {
-          background-color: #2f1fa8;
-          color: #ffffff;
-          transform: translateY(-1px);
-        }
+       
 
         /* Stats Cards */
         .stat-card {
-          background-color: rgba(245, 245, 245, 1);
-          border: 1px solid rgba(214, 214, 214, 1);
-          border-radius: 56px;
-          padding: 3.25rem 1.5rem;
           text-align: center;
           height: 100%;
           display: flex;
@@ -84,24 +47,23 @@ const StoryJourneySection = () => {
           align-items: center;
           justify-content: center;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .stat-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.06);
+          border-right: 1px solid rgba(40, 42, 58, 1);
+          &:last-child {
+            border-right: none;
+          }
         }
 
         .stat-number {
           font-size: 4rem;
           font-weight: 700;
           letter-spacing: -0.03em;
-          color: #09090b;
+          color: rgba(0, 0, 0, 1);
           line-height: 1;
           margin-bottom: 0.75rem;
         }
 
         .stat-label {
-          color: #52525b;
+          color: rgba(66, 66, 66, 1);
           font-size: 0.95rem;
           font-weight: 500;
           margin: 0;
@@ -140,11 +102,22 @@ const StoryJourneySection = () => {
             <div className="col-12">
               <div className="story-content-container">
                 {/* Visual Banner */}
-                <div className="story-visual-card">
-                  <img
-                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
-                    alt="The Journey Of Mographist visual art"
-                  />
+                <div className="story-visual-card row mb-4">
+                  <div className="col-lg-6 col-md-6 col-12">
+                    <img
+                      src={journey2}
+                      className="image1"
+                      alt="The Journey Of Mographist visual art"
+                    />
+                  </div>
+
+                  <div className="col-lg-6 col-md-6 col-12">
+                    <img
+                      src={journey1}
+                      className="image2"
+                      alt="The Journey Of Mographist visual art"
+                    />
+                  </div>
                 </div>
 
                 {/* Paragraph Content */}
@@ -163,7 +136,7 @@ const StoryJourneySection = () => {
                 <div>
                   <a href="#contact" className="btn-start-story">
                     Start a project
-                    <span aria-hidden="true">&rarr;</span>
+                    <img src={arrow} alt="Arrow icon" />
                   </a>
                 </div>
               </div>
@@ -171,10 +144,18 @@ const StoryJourneySection = () => {
           </div>
 
           {/* Bottom Statistics Cards */}
-          <div className="row g-4 pt-lg-5 pt-3 justify-content-center">
+          <div className="row g-4 pt-lg-5 pt-3 mt-lg-5 justify-content-center">
             {stats.map((item, idx) => (
               <div key={idx} className="col-12 col-md-4">
-                <div className="stat-card">
+                <div
+                  className="stat-card"
+                  style={{
+                    borderRight:
+                      idx === stats.length - 1
+                        ? "none"
+                        : "1px solid rgba(40, 42, 58, 1)",
+                  }}
+                >
                   <div className="stat-number">{item.value}</div>
                   <p className="sub-description mb-0">{item.label}</p>
                 </div>

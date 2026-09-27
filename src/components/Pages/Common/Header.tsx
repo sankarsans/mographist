@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../../../assets/logo.png"; // Adjust the path to your logo image
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
@@ -112,9 +112,15 @@ export default function Header() {
           >
             <ul className="navbar-nav ms-auto align-items-lg-center my-3 my-lg-0 gap-lg-1">
               <li className="nav-item">
-                <a className="nav-link nav-link-custom" href="#works">
+                <NavLink
+                  to="/works"
+                  className={({ isActive }) =>
+                    `nav-link nav-link-custom ${isActive ? "active" : ""}`
+                  }
+                  onClick={() => setIsOpen(false)}
+                >
                   Works
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <a className="nav-link nav-link-custom" href="#services">

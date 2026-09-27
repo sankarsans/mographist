@@ -1,4 +1,6 @@
-import React from "react";
+import arrow from "../../../assets/arrow.png";
+import leader from "../../../assets/leader.png";
+import badge from "../../../assets/badge.png";
 
 const LeadershipSection = () => {
   return (
@@ -28,7 +30,7 @@ const LeadershipSection = () => {
           width: 380px;
           height: 380px;
           border-radius: 50%;
-          background: #eef4ff;
+          // background: #eef4ff;
           bottom: 15px;
           left: 50%;
           transform: translateX(-50%);
@@ -131,7 +133,8 @@ const LeadershipSection = () => {
           font-weight: 700;
           letter-spacing: -0.025em;
           color: #09090b;
-          margin-bottom: 0.35rem;
+          margin-bottom: 1.5rem;
+          
         }
 
         .member-role {
@@ -140,7 +143,7 @@ const LeadershipSection = () => {
           font-weight: 600;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          margin-bottom: 1.75rem;
+          margin-bottom: 0.35rem;
         }
 
         .bio-paragraph {
@@ -201,12 +204,18 @@ const LeadershipSection = () => {
             <div className="col-12 col-lg-6">
               <div className="portrait-stage">
                 <div className="shape-quarter"></div>
-                <div className="stage-blob-bg"></div>
+                <div className="stage-blob-bg">
+                  <img
+                    src={badge}
+                    alt="Badge"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </div>
                 <div className="shape-orange-dot"></div>
 
                 {/* Main Profile Cutout */}
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80"
+                  src={leader}
                   alt="Chetan R Vanahalli"
                   className="portrait-img rounded-circle"
                 />
@@ -241,8 +250,8 @@ const LeadershipSection = () => {
 
             {/* Right Column: Profile Narrative & Info */}
             <div className="col-12 col-lg-6 ps-lg-5">
-              <h3 className="member-name">Chetan R Vanahalli</h3>
               <p className="member-role">Founder & Creative Director</p>
+              <h3 className="member-name">Chetan R Vanahalli</h3>
 
               <p className="sub-description mb-3">
                 With over 10 years of professional experience in video
@@ -259,9 +268,9 @@ const LeadershipSection = () => {
                 engaging visual experiences that deliver measurable results.
               </p>
 
-              <a href="#creator" className="btn-meet-creator">
+              <a href="#creator" className="btn-start-story mt-3">
                 Meet the Creator
-                <span aria-hidden="true">&rarr;</span>
+                <img src={arrow} alt="Arrow icon" />
               </a>
             </div>
           </div>
