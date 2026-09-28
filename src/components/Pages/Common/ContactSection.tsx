@@ -61,6 +61,10 @@ const ContactSection = () => {
     <>
       <style>{`
         /* Contact Details */
+        .contact-section {
+            border-radius: 80px;
+    margin: 0rem 2rem;
+        }
         .contact-info-item {
           display: flex;
           align-items: center;
@@ -84,7 +88,7 @@ const ContactSection = () => {
 
         .info-label {
           font-size: 0.75rem;
-          color: #71717a;
+          color: rgba(165, 165, 165, 1);
           margin: 0;
           text-transform: capitalize;
         }
@@ -171,11 +175,11 @@ const ContactSection = () => {
         }
 
         .btn-submit {
-          background-color: #3b28cc;
+          background-color: rgba(58, 36, 181, 1);
           color: #ffffff;
           font-size: 0.9rem;
           font-weight: 600;
-          border-radius: 12px;
+          border-radius: 99px;
           padding: 0.95rem 1.5rem;
           border: none;
           width: 100%;
@@ -199,7 +203,7 @@ const ContactSection = () => {
         }
       `}</style>
 
-      <section className="bg-black-section">
+      <section className="contact-section bg-black-section">
         <div className="container">
           <div className="row gy-5 align-items-centers">
             {/* Left Column: Heading & Contact Channels */}
@@ -473,7 +477,6 @@ const ContactSection = () => {
                     {/* Submit Button */}
                     <button type="submit" className="btn btn-submit">
                       Send Message
-                      <span aria-hidden="true">&rarr;</span>
                     </button>
                   </form>
                 )}

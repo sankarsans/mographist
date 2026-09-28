@@ -150,6 +150,12 @@ export default function Why() {
           display: flex;
           flex-direction: column;
           min-width: 0;
+          transition: all 0.3s ease;
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            }
         }
 
         .impact-card-large {
