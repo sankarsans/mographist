@@ -32,7 +32,7 @@ const Footer = () => {
           background-color: #09090b;
           color: #ffffff;
           padding: 5rem 0 2rem 0;
-          font-family: system-ui, -apple-system, sans-serif;
+          
           border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 

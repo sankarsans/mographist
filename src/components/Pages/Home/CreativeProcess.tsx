@@ -1,4 +1,5 @@
 import { useState } from "react";
+import pattern from "../../../assets/pattern.png";
 
 const processSteps = [
   {
@@ -46,12 +47,23 @@ const CreativeProcess = () => {
     <>
       <style>{`
         .process-section {
-          background-color: #ffffff;
+          background: linear-gradient(263deg,rgba(248, 249, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+          position: relative;
           padding: 5rem 0;
-          font-family: system-ui, -apple-system, sans-serif;
-        
 
-        
+          &::after{
+              content: "";
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background: url(${pattern}) no-repeat;
+              z-index: 99;
+              background-size: auto;
+              background-position: top right;
+            }
+      }
 
         /* Flexbox Cards Container */
         .process-cards-track {
@@ -59,13 +71,17 @@ const CreativeProcess = () => {
           align-items: stretch;
           gap: 1rem;
           margin-top: 3.5rem;
+              z-index: 999;
+    position: relative;
         }
 
         /* Default Card Styling */
         .process-card {
           flex: 1;
-          background-color: #f4f4f5;
-          border-radius: 20px;
+          background-color: rgba(255, 255, 255, 1);
+          border: 1px solid rgba(226, 226, 226, 1);
+          box-shadow: rgba(219, 222, 248, 0.3) 0px 10px 20px -10px;
+          border-radius: 24px;
           padding: 1.75rem 1.5rem;
           cursor: pointer;
           position: relative;
@@ -93,13 +109,13 @@ const CreativeProcess = () => {
         .step-number {
           font-size: 2.25rem;
           font-weight: 400;
-          color: #a1a1aa;
+          color: rgba(223, 223, 223, 1);
           margin-bottom: 1.0rem;
           transition: color 0.3s ease;
         }
 
         .process-card.active .step-number {
-          color: #f97316;
+          color: rgba(255, 226, 194, 1);
           font-weight: 700;
         }
 
@@ -118,14 +134,14 @@ const CreativeProcess = () => {
         .step-desc {
           font-size: 1rem;
           line-height: 1.45;
-          color: #71717a;
+          color: rgba(66, 66, 66, 1);
           margin: 0;
           font-weight: 400;
           transition: color 0.3s ease;
         }
 
         .process-card.active .step-desc {
-          color: #a1a1aa;
+          color: rgba(184, 184, 184, 1);
         }
 
         /* Mobile Breakpoints */

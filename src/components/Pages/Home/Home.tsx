@@ -5,6 +5,7 @@ import TestimonialsSection from "./TestimonialsSection";
 import FAQSection from "./FAQSection";
 import Banner from "./Banner";
 import ContactSection from "../Common/ContactSection";
+import Why from "./Why";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <div id="ServicesSection">
         <ServicesSection />
       </div>
+      <Why />
       <CreativeProcess />
       <TestimonialsSection />
       <FAQSection />

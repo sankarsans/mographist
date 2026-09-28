@@ -36,7 +36,7 @@ const HeroBannerShowreel = () => {
           justify-content: space-between;
           padding: 9rem 0 2.5rem 0;
           overflow: hidden;
-          font-family: system-ui, -apple-system, sans-serif;
+          
         }
 
         /* Top Tag */

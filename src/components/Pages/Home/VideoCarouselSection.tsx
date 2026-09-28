@@ -104,7 +104,7 @@ const VideoCarouselSection = () => {
           background-color: #ffffff;
           padding: 3.5rem 0 5rem 0;
           overflow: hidden;
-          font-family: system-ui, -apple-system, sans-serif;
+          
         }
 
         .carousel-stage {

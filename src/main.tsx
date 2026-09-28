@@ -6,11 +6,14 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./style.scss";
 import { BrowserRouter } from "react-router-dom";
+import SmoothScroll from "./components/Pages/Common/SmoothScroll";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <SmoothScroll>
+        <App />
+      </SmoothScroll>
     </BrowserRouter>
   </React.StrictMode>,
 );

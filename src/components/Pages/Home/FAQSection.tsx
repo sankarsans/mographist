@@ -47,7 +47,6 @@ const FAQSection = () => {
         .faq-section {
           background-color: #ffffff;
           padding: 5rem 0;
-          font-family: system-ui, -apple-system, sans-serif;
         }
 
         
@@ -84,7 +83,7 @@ const FAQSection = () => {
         .faq-question {
           font-size: 1.05rem;
           font-weight: 600;
-          color: rgba(26, 26, 26, 1);
+          color: rgba(0, 0, 0, 1);
           margin: 0;
           transition: color 0.2s ease;
         }
@@ -132,7 +131,7 @@ const FAQSection = () => {
         }
 
         .faq-answer {
-          color: rgba(41, 41, 41, 1);
+          color: rgba(66, 66, 66, 1);
           font-size: 0.92rem;
           line-height: 1.6;
           margin: 0;

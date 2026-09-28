@@ -58,7 +58,7 @@ export default function Header() {
         }
 
         .logo-text {
-          font-family: system-ui, -apple-system, sans-serif;
+          
           font-weight: 800;
           font-size: 1.75rem;
           line-height: 1;

@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+html {
+  scroll-behavior: auto;
+}
+
 body {
   font-family: "Onest", sans-serif;
   font-optical-sizing: auto;
@@ -34,7 +38,7 @@ body {
   height: 9px;
   border-radius: 50%;
   background-color: rgba(255, 134, 0, 1);
-  margin-top: -4px;
+  // margin-top: -4px;
 }
 
 .main-heading {
@@ -42,10 +46,13 @@ body {
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  color: #09090b;
+  color: rgba(0, 0, 0, 1);
   margin-bottom: 1rem;
   &.white {
     color: #ffffff;
+  }
+  .highlight {
+    color: rgba(58, 36, 181, 1);
   }
 }
 
@@ -67,9 +74,9 @@ body {
 }
 
 .section-subtitle {
-  color: #52525b;
+  color: rgba(41, 41, 41, 1);
   font-size: 1.25rem !important;
-  max-width: 520px;
+  // max-width: 520px;
   font-weight: 500;
   line-height: 1.5;
   font-size: clamp(1.4rem, 1vw, 3.75rem);

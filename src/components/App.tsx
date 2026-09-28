@@ -1,5 +1,4 @@
 import Header from "./Pages/Common/Header";
-import ContactSection from "./Pages/Common/ContactSection";
 import Footer from "./Pages/Common/Footer";
 import Home from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";

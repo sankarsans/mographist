@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
+import arrowNew from "../../../assets/arrow-new.png";
 const servicesData = [
   {
     id: "01",
@@ -124,7 +124,7 @@ const servicesData = [
 ];
 
 const DynamicServicesShowcase = () => {
-  const [activeId, setActiveId] = useState("02");
+  const [activeId, setActiveId] = useState("01");
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -156,6 +156,8 @@ const DynamicServicesShowcase = () => {
     <>
       <style>{`
       .services-section {
+      border-radius: 80px;
+      margin: 0rem 2rem;
         .services-section::before {
           content: "";
           position: absolute;
@@ -176,7 +178,7 @@ const DynamicServicesShowcase = () => {
           padding: 0.6rem 0;
           background: none;
           border: none;
-          color: #71717a;
+          color: rgba(118, 118, 118, 1);
           font-size: 1.125rem;
           font-weight: 500;
           text-align: left;
@@ -194,12 +196,16 @@ const DynamicServicesShowcase = () => {
           color: #ffffff;
           font-weight: 700;
           font-size: 1.15rem;
+          .service-id {
+           color: #ffffff;
+          }
         }
 
         .service-id {
           font-weight: 700;
           font-size: 1rem;
           min-width: 26px;
+          color: rgba(165, 165, 165, 1);
         }
 
         .service-arrow {
@@ -212,7 +218,7 @@ const DynamicServicesShowcase = () => {
         .preview-card {
           position: relative;
           background-color: #18181b;
-          border-radius: 36px;
+          border-radius: 50px 50px 50px 0;
           height: 440px;
           overflow: hidden;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -318,11 +324,10 @@ const DynamicServicesShowcase = () => {
         }
 
         .tag-pill {
-          background-color: #18181b;
-          color: #a1a1aa;
-          border: 1px solid #27272a;
+        background: linear-gradient(90deg, rgb(135 132 132 / 25%) 0%, rgba(255, 255, 255, 0.11) 100%);          color: rgba(255, 255, 255, 1);
+          border: 1px solid rgba(255, 255, 255, 0.23);
           border-radius: 9999px;
-          padding: 0.5rem 1.1rem;
+          padding: 0.8rem 1.1rem;
           font-size: 0.875rem;
           font-weight: 500;
           white-space: nowrap;
@@ -348,104 +353,104 @@ const DynamicServicesShowcase = () => {
       }
       `}</style>
 
-      <section className="services-section bg-black-section">
+      <section className="services-section bg-black-section mx-0 mx-lg-4 mx-md-4">
         <div className="container">
-          {/* Section Header */}
-          <div className="row">
-            <div className="col-12">
-              <span className="section-tag">How We Work</span>
-              <h2 className="main-heading white">Our Services</h2>
-            </div>
-          </div>
-
-          {/* Dynamic Content Grid */}
-          <div className="row align-items-center gy-5">
-            {/* Left Column: Interactive Nav List */}
-            <div className="col-12 col-lg-5">
-              <div className="d-flex flex-column">
-                {servicesData.map((service) => {
-                  const isActive = activeId === service.id;
-                  return (
-                    <button
-                      key={service.id}
-                      type="button"
-                      onClick={() => setActiveId(service.id)}
-                      className={`service-item ${isActive ? "active" : ""}`}
-                    >
-                      <span className="service-id">{service.id}</span>
-                      <span>{service.title}</span>
-                      {isActive && (
-                        <span className="service-arrow">&rarr;</span>
-                      )}
-                    </button>
-                  );
-                })}
+          <div className="services-bg">
+            {/* Section Header */}
+            <div className="row">
+              <div className="col-12">
+                <span className="section-tag">How We Work</span>
+                <h2 className="main-heading white">Our Services</h2>
               </div>
             </div>
 
-            {/* Right Column: Reactive Video Player & Tags */}
-            <div className="col-12 col-lg-7">
-              <div
-                className="preview-card"
-                onClick={togglePlay}
-                role="button"
-                tabIndex={0}
-              >
-                {/* HTML5 Video Element */}
-                <video
-                  ref={videoRef}
-                  className="showcase-video"
-                  src={currentService.videoSrc}
-                  poster={currentService.poster}
-                  playsInline
-                  loop
-                  muted
-                  onEnded={() => setIsPlaying(false)}
-                />
-
-                {/* Central Play/Pause Trigger */}
-                <button
-                  type="button"
-                  className="btn play-btn"
-                  aria-label={isPlaying ? "Pause video" : "Play video"}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    togglePlay();
-                  }}
-                >
-                  {isPlaying ? (
-                    <div className="pause-icon">
-                      <span className="pause-bar"></span>
-                      <span className="pause-bar"></span>
-                    </div>
-                  ) : (
-                    <div className="play-icon"></div>
-                  )}
-                </button>
-
-                {/* Dynamic Bottom Notch Description */}
-                <div
-                  className="card-footer-box"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <p>{currentService.description}</p>
-                  <a
-                    href={`#service-${currentService.id}`}
-                    className="external-btn"
-                    aria-label={`View details for ${currentService.title}`}
-                  >
-                    &#8599;
-                  </a>
+            {/* Dynamic Content Grid */}
+            <div className="row align-items-center gy-5">
+              {/* Left Column: Interactive Nav List */}
+              <div className="col-12 col-lg-5">
+                <div className="d-flex flex-column">
+                  {servicesData.map((service) => {
+                    const isActive = activeId === service.id;
+                    return (
+                      <button
+                        key={service.id}
+                        type="button"
+                        onClick={() => setActiveId(service.id)}
+                        className={`service-item ${isActive ? "active" : ""}`}
+                      >
+                        <span className="service-id">{service.id}</span>
+                        <span>{service.title}</span>
+                        {isActive && <img src={arrowNew} alt="Arrow icon" />}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Dynamic Categorical Tags */}
-              <div className="d-flex flex-wrap gap-2 justify-content-between justify-content-lg-between mt-3">
-                {currentService.tags.map((tag, idx) => (
-                  <span key={idx} className="tag-pill">
-                    {tag}
-                  </span>
-                ))}
+              {/* Right Column: Reactive Video Player & Tags */}
+              <div className="col-12 col-lg-7">
+                <div
+                  className="preview-card"
+                  onClick={togglePlay}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {/* HTML5 Video Element */}
+                  <video
+                    ref={videoRef}
+                    className="showcase-video"
+                    src={currentService.videoSrc}
+                    poster={currentService.poster}
+                    playsInline
+                    loop
+                    muted
+                    onEnded={() => setIsPlaying(false)}
+                  />
+
+                  {/* Central Play/Pause Trigger */}
+                  <button
+                    type="button"
+                    className="btn play-btn"
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      togglePlay();
+                    }}
+                  >
+                    {isPlaying ? (
+                      <div className="pause-icon">
+                        <span className="pause-bar"></span>
+                        <span className="pause-bar"></span>
+                      </div>
+                    ) : (
+                      <div className="play-icon"></div>
+                    )}
+                  </button>
+
+                  {/* Dynamic Bottom Notch Description */}
+                  {/* <div
+                    className="card-footer-box"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <p>{currentService.description}</p>
+                    <a
+                      href={`#service-${currentService.id}`}
+                      className="external-btn"
+                      aria-label={`View details for ${currentService.title}`}
+                    >
+                      &#8599;
+                    </a>
+                  </div> */}
+                </div>
+
+                {/* Dynamic Categorical Tags */}
+                <div className="d-flex flex-wrap gap-2 mt-3">
+                  {currentService.tags.map((tag, idx) => (
+                    <span key={idx} className="tag-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

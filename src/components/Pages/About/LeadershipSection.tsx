@@ -9,7 +9,7 @@ const LeadershipSection = () => {
         .leadership-section {
           background-color: #ffffff;
           padding: 5.5rem 0;
-          font-family: system-ui, -apple-system, sans-serif;
+          
           overflow: hidden;
         }
 
