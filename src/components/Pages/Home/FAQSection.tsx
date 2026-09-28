@@ -49,8 +49,6 @@ const FAQSection = () => {
           padding: 5rem 0;
         }
 
-        
-
         /* FAQ Accordion List */
         .faq-list {
           display: flex;
