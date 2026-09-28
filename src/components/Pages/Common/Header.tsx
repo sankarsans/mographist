@@ -84,7 +84,7 @@ export default function Header() {
           {/* Brand Logo */}
           <a className="navbar-brand d-flex align-items-center" href="#home">
             <NavLink
-              to="/"
+              to="/home"
               className={({ isActive }) =>
                 `nav-link nav-link-custom ${isActive ? "active" : ""}`
               }
