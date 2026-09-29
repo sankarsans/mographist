@@ -1,11 +1,14 @@
 import Header from "./Pages/Common/Header";
 import Footer from "./Pages/Common/Footer";
 import Home from "./Pages/Home/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import About from "./Pages/About/About";
 import Work from "./Pages/Work/Work";
 
 export default function App() {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/home" || location.pathname === "/";
+
   return (
     <div>
       <Header />
@@ -19,7 +22,7 @@ export default function App() {
       </Routes>
       {/* <ContactSection /> */}
 
-      <Footer />
+      {!isHomePage && <Footer />}
     </div>
   );
 }

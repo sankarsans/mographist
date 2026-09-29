@@ -73,12 +73,17 @@ const StoryJourneySection = () => {
           .story-journey-section {
             padding: 4rem 0;
           }
+            .stat-card{
+            border: none !important;}
           .story-heading {
             margin-bottom: 2.5rem;
           }
           .story-visual-card {
-            height: 190px;
+            height: auto;
             border-radius: 24px;
+            img {
+            margin-bottom: 1.5rem;
+            }
           }
         }
       `}</style>

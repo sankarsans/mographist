@@ -1,5 +1,5 @@
-import React from "react";
-
+import testi from "../../../assets/tesit-bg.png";
+import testi1 from "../../../assets/test-bg-2.png";
 const testimonials = [
   {
     id: 1,
@@ -35,15 +35,28 @@ const TestimonialsSection = () => {
     <>
       <style>{`
         /* Testimonial Card Styling */
+        .testimonials-section {
+              border-radius: 80px;
+          margin: 0rem 2rem;
+          background: ${`url(${testi})`};
+          background-size: cover;
+          background-position: 0 0;
+          padding: 4.5rem 3rem;
+          .container {
+          //  background: ${`url(${testi1})`};
+          background-size: cover;
+          background-position: 0 0;
+          }
+        }
         .testimonial-card {
-          background-color: rgba(26, 26, 26, 1);
+          
           border-radius: 28px;
           padding: 2.25rem 2rem;
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          // border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(133, 97, 71, 0.3);
           transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -65,27 +78,27 @@ const TestimonialsSection = () => {
         .quote-text {
           font-size: 0.95rem;
           line-height: 1.6;
-          color: rgba(165, 165, 165, 1);
+          color: rgba(185, 185, 185, 1);
           font-weight: 400;
           margin-bottom: 2rem;
         }
 
         .author-name {
           font-size: 1.05rem;
-          font-weight: 700;
-          color: #ffffff;
+          font-weight: 600;
+          color: rgba(250, 250, 250, 1);
           margin-bottom: 0.2rem;
         }
 
         .author-role {
           font-size: 0.85rem;
-          color: rgba(165, 165, 165, 1);
+          color: rgba(205, 205, 205, 1);
           margin-bottom: 0;
           font-weight: 400;
         }
       `}</style>
 
-      <section className="testimonials-section bg-black-section">
+      <section className="testimonials-section ">
         <div className="container">
           {/* Header */}
           <div className="row">

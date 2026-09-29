@@ -82,7 +82,7 @@ const WhyChooseUs = () => {
   const padZero = (num) => (num < 10 ? `0${num}` : num);
 
   return (
-    <div className="container py-5">
+    <div className="container choose-section py-5">
       {/* Hide scrollbar with inline styles for cross-browser compatibility */}
       <style>
         {`
@@ -106,7 +106,7 @@ background-color: rgb(199 189 189 / 10%);background: linear-gradient(90deg,rgba(
       </style>
 
       <div
-        className="p-4 p-md-5 position-relative text-white overflow-hidden"
+        className="p-4 p-md-5 position-relative text-white overflow-hidden inner-section"
         style={{
           backgroundColor: "rgba(0, 0, 0, 1)",
           borderRadius: "80px",

@@ -16,7 +16,7 @@ const Features = () => {
           color: #ffffff;
           font-size: 0.875rem;
           font-weight: 400;
-          border-radius: 12px;
+          border-radius: 50px;
           padding: 0.85rem 1.2rem;
           border: none;
           display: inline-flex;
@@ -55,7 +55,7 @@ const Features = () => {
             <div className="col-12 col-lg-auto d-flex justify-content-start justify-content-lg-end">
               <a href="#projects" className="btn-view-projects">
                 View all projects
-                <span aria-hidden="true">&rarr;</span>
+                {/* <span aria-hidden="true">&rarr;</span> */}
               </a>
             </div>
           </div>

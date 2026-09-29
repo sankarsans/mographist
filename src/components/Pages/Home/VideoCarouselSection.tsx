@@ -289,25 +289,26 @@ const VideoCarouselSection = () => {
         .counter-box {
           font-size: 0.95rem;
           font-weight: 700;
-          color: #71717a;
+          color: rgba(41, 41, 41, 1);
           white-space: nowrap;
         }
 
         .counter-highlight {
-          color: #f97316;
+          color: rgba(58, 36, 181, 1);
+          font-size: 1.25rem;
         }
 
         .progress-track {
           flex: 1;
-          height: 3px;
-          background-color: #e4e4e7;
-          border-radius: 4px;
+          height: 4px;
+          background-color: rgba(230, 230, 230, 1);
+          border-radius: 10px;
           overflow: hidden;
         }
 
         .progress-fill {
           height: 100%;
-          background-color: #f97316;
+          background-color: rgba(58, 36, 181, 1);
           border-radius: 4px;
           transition: width 0.4s ease;
         }

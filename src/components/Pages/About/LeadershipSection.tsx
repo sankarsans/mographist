@@ -185,6 +185,8 @@ const LeadershipSection = () => {
           .badge-right {
             right: 0;
           }
+            .portrait-img{
+            width: 100%;}
         }
       `}</style>
 

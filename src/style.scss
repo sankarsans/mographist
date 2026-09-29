@@ -123,3 +123,16 @@ body {
   color: #ffffff;
   transform: translateY(-1px);
 }
+
+@media (max-width: 991.98px) {
+  .bg-black-section,
+  .testimonials-section,
+  .choose-section {
+    margin: 0rem 0rem !important;
+    padding: 3rem 1rem !important;
+    border-radius: 30px !important;
+    .inner-section {
+      border-radius: 30px !important;
+    }
+  }
+}

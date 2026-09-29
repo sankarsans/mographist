@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import logo from "../../../assets/mographist-logo.png";
+import line from "../../../assets/line.png";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -63,7 +65,9 @@ const ContactSection = () => {
         /* Contact Details */
         .contact-section {
             border-radius: 80px;
-    margin: 0rem 2rem;
+            margin: 0rem 2rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         .contact-info-item {
           display: flex;
@@ -201,6 +205,29 @@ const ContactSection = () => {
             padding: 2rem 1.5rem;
           }
         }
+          .copyright-text,
+        .sub-footer-link {
+          color: rgba(255, 255, 255, 0.2);
+          font-size: 0.82rem;
+        }
+
+        .sub-footer-link {
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .sub-footer-link:hover {
+          color: #a1a1aa;
+        }
+          .footer-logo{
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.5rem;
+          background: url(${line});
+          background-size: auto;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          }
       `}</style>
 
       <section className="contact-section bg-black-section">
@@ -481,6 +508,22 @@ const ContactSection = () => {
                   </form>
                 )}
               </div>
+            </div>
+          </div>
+          <div className="footer-logo pt-5 mt-5">
+            <img src={logo} className="img-fluid" alt="Logo" />
+          </div>
+          <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+            <p className="copyright-text mb-0">
+              &copy; 2026 Mographist OPC Pvt. Ltd. All rights reserved.
+            </p>
+            <div className="d-flex align-items-center gap-4">
+              <a href="#privacy" className="sub-footer-link">
+                Privacy Policy
+              </a>
+              <a href="#terms" className="sub-footer-link">
+                Terms of Service
+              </a>
             </div>
           </div>
         </div>
