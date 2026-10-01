@@ -36,12 +36,12 @@ const HeroBannerShowreel = () => {
           justify-content: space-between;
           padding: 9rem 0 2.5rem 0;
           overflow: hidden;
-          
+          text-align: center;
         }
 
         /* Top Tag */
         .hero-tag {
-          color: rgba(26, 26, 26, 1);
+          color: rgba(255, 134, 0, 1);
           font-size: 1.5rem;
           font-weight: 500;
           letter-spacing: 0.16em;
@@ -50,14 +50,16 @@ const HeroBannerShowreel = () => {
           align-items: center;
           gap: 0.65rem;
           margin-bottom: 1.5rem;
+          font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
         }
 
         .hero-tag::before {
           content: "";
-          display: inline-block;
-          width: 24px;
-          height: 3px;
-          background-color: rgba(26, 26, 26, 1);
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(255, 134, 0, 1);
         }
 
         /* Main Big Heading */
@@ -70,11 +72,11 @@ const HeroBannerShowreel = () => {
         }
 
         .text-ai {
-          color: #09090b;
+          color: rgba(208, 188, 247, 1);
         }
 
         .text-powered {
-          color: #3b28cc;
+          color: rgba(255, 255, 255, 1);
           margin-left: 0.25em;
         }
 
@@ -83,30 +85,31 @@ const HeroBannerShowreel = () => {
           display: flex;
           align-items: flex-start;
           gap: 1rem;
-          font-size: clamp(1.25rem, 3.2vw, 2.35rem);
-          font-weight: 500;
+          font-size: 2rem;
+          font-weight: 400;
           line-height: 1.25;
           letter-spacing: -0.02em;
-          color: rgba(0, 0, 0, 1);
+          color: rgba(157, 157, 157, 1);
           max-width: 820px;
         }
 
-        .orange-dot {
-          width: 28px;
-          height: 28px;
-          min-width: 28px;
-          background-color: rgba(255, 134, 0, 1);
-          border-radius: 50%;
-          margin-top: 0.75rem;
-        }
+        // .orange-dot {
+        //   width: 28px;
+        //   height: 28px;
+        //   min-width: 28px;
+        //   background-color: rgba(255, 134, 0, 1);
+        //   border-radius: 50%;
+        //   margin-top: 0.75rem;
+        // }
 
         /* Bottom Pipeline */
         .pipeline-bar {
           font-size: 0.72rem;
           font-weight: 600;
           letter-spacing: 0.16em;
-          color: rgba(87, 87, 87, 1);
+          color: rgba(158, 158, 158, 1);
           text-transform: uppercase;
+          text-align: left;
           span {
                     padding: 0 1.3rem;
 
@@ -379,7 +382,7 @@ const HeroBannerShowreel = () => {
               </h1>
 
               <div className="hero-subtitle">
-                <span className="orange-dot"></span>
+                {/* <span className="orange-dot"></span> */}
                 <span>
                   Motion Graphics, Animation & AI powered Video Production
                 </span>

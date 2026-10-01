@@ -123,9 +123,15 @@ export default function Header() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link nav-link-custom" href="#services">
+                <NavLink
+                  to="/services"
+                  className={({ isActive }) =>
+                    `nav-link nav-link-custom ${isActive ? "active" : ""}`
+                  }
+                  onClick={() => setIsOpen(false)}
+                >
                   Services
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink

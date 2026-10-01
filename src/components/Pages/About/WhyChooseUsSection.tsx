@@ -148,8 +148,8 @@ background-color: rgb(199 189 189 / 10%);background: linear-gradient(90deg,rgba(
                 disabled={currentIndex === 1}
                 className="btn rounded-circle p-0 d-flex justify-content-center align-items-center nav-arrow-btn"
                 style={{
-                  width: "60px",
-                  height: "60px",
+                  width: "50px",
+                  height: "50px",
                   border: "1px solid rgba(255,255,255)",
                   transform: "rotate(-180deg)",
                   backgroundColor:
@@ -169,8 +169,8 @@ background-color: rgb(199 189 189 / 10%);background: linear-gradient(90deg,rgba(
                 disabled={currentIndex === steps.length}
                 className="btn rounded-circle p-0 d-flex justify-content-center align-items-center nav-arrow-btn"
                 style={{
-                  width: "60px",
-                  height: "60px",
+                  width: "50px",
+                  height: "50px",
                   border: "1px solid rgba(255,255,255)",
                   backgroundColor:
                     currentIndex === steps.length

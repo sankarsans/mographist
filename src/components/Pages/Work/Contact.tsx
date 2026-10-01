@@ -1,6 +1,3 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 const Contact = () => {
   return (
     <div className="container py-5 mb-5">
