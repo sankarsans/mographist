@@ -1,50 +1,50 @@
-import React, { useRef } from "react";
-import serviceOne from "../../../assets/service-1.png";
-import arrow from "../../../assets/arrow.png";
+import React, { useRef } from 'react';
+import serviceOne from '../../../assets/service-1.png';
+import arrow from '../../../assets/arrow.png';
 
 const approachCards = [
   {
     id: 1,
-    title: "Creative Direction",
+    title: 'Creative Direction',
     description:
-      "Built the narrative, visual language and emotional tone of the film",
-    bgColor: "rgba(217, 242, 247, 1)",
-    borderColor: "rgba(95, 210, 233, 1)",
+      'Built the narrative, visual language and emotional tone of the film',
+    bgColor: 'rgba(217, 242, 247, 1)',
+    borderColor: 'rgba(95, 210, 233, 1)',
     image: serviceOne,
   },
   {
     id: 2,
-    title: "Motion & 3D",
+    title: 'Motion & 3D',
     description:
-      "Created dynamic environments and motion systems that brought the digital world to life",
-    bgColor: "rgba(250, 237, 237, 1)",
-    borderColor: "rgba(217, 145, 145, 1)",
+      'Created dynamic environments and motion systems that brought the digital world to life',
+    bgColor: 'rgba(250, 237, 237, 1)',
+    borderColor: 'rgba(217, 145, 145, 1)',
     image: serviceOne,
   },
   {
     id: 3,
-    title: "Sound & Atmosphere",
-    description: "Designed sound and atmosphere to add tension",
-    bgColor: "rgba(241, 241, 241, 1)",
-    borderColor: "rgba(159, 159, 159, 1)",
+    title: 'Sound & Atmosphere',
+    description: 'Designed sound and atmosphere to add tension',
+    bgColor: 'rgba(241, 241, 241, 1)',
+    borderColor: 'rgba(159, 159, 159, 1)',
     image: serviceOne,
   },
   {
     id: 4,
-    title: "AI Integration",
+    title: 'AI Integration',
     description:
-      "Used AI-assisted workflows to accelerate iterative concept development and asset generation",
-    bgColor: "rgba(238, 236, 255, 1)",
-    borderColor: "rgba(147, 139, 215, 1)",
+      'Used AI-assisted workflows to accelerate iterative concept development and asset generation',
+    bgColor: 'rgba(238, 236, 255, 1)',
+    borderColor: 'rgba(147, 139, 215, 1)',
     image: serviceOne,
   },
   {
     id: 5,
-    title: "Visual FX",
+    title: 'Visual FX',
     description:
-      "Engineered subtle volumetric lighting and particle layers to heighten immersion",
-    bgColor: "rgba(232, 247, 238, 1)",
-    borderColor: "rgba(140, 198, 150, 1)",
+      'Engineered subtle volumetric lighting and particle layers to heighten immersion',
+    bgColor: 'rgba(232, 247, 238, 1)',
+    borderColor: 'rgba(140, 198, 150, 1)',
     image: serviceOne,
   },
 ];
@@ -56,14 +56,14 @@ const ServiceTypes = () => {
     if (scrollContainerRef.current) {
       const scrollOffset = 310;
       scrollContainerRef.current.scrollBy({
-        left: direction === "left" ? -scrollOffset : scrollOffset,
-        behavior: "smooth",
+        left: direction === 'left' ? -scrollOffset : scrollOffset,
+        behavior: 'smooth',
       });
     }
   };
 
   return (
-    <div className="services-section bg-black-section">
+    <div className="services-section bg-black-section pt-0 mt-0">
       <div className="container py-5">
         {/* Hide native scrollbar while keeping track scrollable */}
         <style>
@@ -129,19 +129,19 @@ const ServiceTypes = () => {
               <button
                 type="button"
                 className="approach-nav-btn"
-                onClick={() => handleScroll("left")}
+                onClick={() => handleScroll('left')}
                 aria-label="Previous cards"
               >
                 <img
                   src={arrow}
                   alt="Arrow icon"
-                  style={{ transform: "rotate(180deg)" }}
+                  style={{ transform: 'rotate(180deg)' }}
                 />
               </button>
               <button
                 type="button"
                 className="approach-nav-btn"
-                onClick={() => handleScroll("right")}
+                onClick={() => handleScroll('right')}
                 aria-label="Next cards"
               >
                 <img src={arrow} alt="Arrow icon" />
@@ -153,29 +153,29 @@ const ServiceTypes = () => {
           <div
             ref={scrollContainerRef}
             className="approach-card-track d-flex gap-4 overflow-x-auto pb-2"
-            style={{ scrollSnapType: "x mandatory" }}
+            style={{ scrollSnapType: 'x mandatory' }}
           >
             {approachCards.map((card) => (
               <div
                 key={card.id}
                 className="flex-shrink-0 d-flex flex-column justify-content-between p-4"
                 style={{
-                  width: "270px",
-                  minHeight: "380px",
-                  borderRadius: "32px",
+                  width: '270px',
+                  minHeight: '380px',
+                  borderRadius: '32px',
                   backgroundColor: card.bgColor,
                   border: `1px solid ${card.borderColor}`,
-                  scrollSnapAlign: "start",
-                  color: "#000",
-                  boxShadow: "0 12px 28px rgba(0, 0, 0, 0.35)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  scrollSnapAlign: 'start',
+                  color: '#000',
+                  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.35)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 }}
               >
                 {/* Media Preview / Stamp Container */}
                 <div
                   className="w-100 rounded-4 overflow-hidden d-flex align-items-center justify-content-center p-4"
                   style={{
-                    height: "170px",
+                    height: '170px',
                   }}
                 >
                   <img
@@ -183,9 +183,9 @@ const ServiceTypes = () => {
                     alt={card.title}
                     className="rounded-3 shadow-sm"
                     style={{
-                      maxWidth: "88%",
-                      maxHeight: "88%",
-                      objectFit: "cover",
+                      maxWidth: '88%',
+                      maxHeight: '88%',
+                      objectFit: 'cover',
                     }}
                   />
                 </div>
@@ -194,16 +194,16 @@ const ServiceTypes = () => {
                 <div className="text-center mt-auto">
                   <h5
                     className="fw-bold mb-2"
-                    style={{ fontSize: "1.5rem", letterSpacing: "-0.01em" }}
+                    style={{ fontSize: '1.5rem', letterSpacing: '-0.01em' }}
                   >
                     {card.title}
                   </h5>
                   <p
                     className="mb-0 text-secondary"
                     style={{
-                      fontSize: "0.875rem",
-                      lineHeight: "1.55",
-                      color: "rgba(88, 89, 93, 1)",
+                      fontSize: '0.875rem',
+                      lineHeight: '1.55',
+                      color: 'rgba(88, 89, 93, 1)',
                     }}
                   >
                     {card.description}
