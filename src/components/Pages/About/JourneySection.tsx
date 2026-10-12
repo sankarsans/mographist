@@ -1,11 +1,12 @@
-import journey1 from "../../../assets/journey1.png";
-import journey2 from "../../../assets/journey2.png";
-import arrow from "../../../assets/arrow.png";
+import journey1 from '../../../assets/journey1.png';
+import journey2 from '../../../assets/journey2.png';
+import arrow from '../../../assets/arrow.png';
+import Buttons from '../Common/Buttons';
 
 const stats = [
-  { value: "30+", label: "Happy clients" },
-  { value: "20+", label: "Projects delivered" },
-  { value: "25+", label: "Years of experience" },
+  { value: '30+', label: 'Happy clients' },
+  { value: '20+', label: 'Projects delivered' },
+  { value: '25+', label: 'Years of experience' },
 ];
 
 const StoryJourneySection = () => {
@@ -139,10 +140,12 @@ const StoryJourneySection = () => {
 
                 {/* Button */}
                 <div>
-                  <a href="#contact" className="btn-start-story">
-                    Start a project
-                    <img src={arrow} alt="Arrow icon" />
-                  </a>
+                  <Buttons
+                    className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
+                    content="Start a project"
+                    icon={arrow}
+                    href="#projects"
+                  />
                 </div>
               </div>
             </div>
@@ -157,8 +160,8 @@ const StoryJourneySection = () => {
                   style={{
                     borderRight:
                       idx === stats.length - 1
-                        ? "none"
-                        : "1px solid rgba(40, 42, 58, 1)",
+                        ? 'none'
+                        : '1px solid rgba(40, 42, 58, 1)',
                   }}
                 >
                   <div className="stat-number">{item.value}</div>

@@ -1,6 +1,7 @@
-import arrow from "../../../assets/arrow.png";
-import leader from "../../../assets/leader.png";
-import badge from "../../../assets/badge.png";
+import arrow from '../../../assets/arrow.png';
+import leader from '../../../assets/leader.png';
+import badge from '../../../assets/badge.png';
+import Buttons from '../Common/Buttons';
 
 const LeadershipSection = () => {
   return (
@@ -210,7 +211,7 @@ const LeadershipSection = () => {
                   <img
                     src={badge}
                     alt="Badge"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </div>
                 <div className="shape-orange-dot"></div>
@@ -270,10 +271,12 @@ const LeadershipSection = () => {
                 engaging visual experiences that deliver measurable results.
               </p>
 
-              <a href="#creator" className="btn-start-story mt-3">
-                Meet the Creator
-                <img src={arrow} alt="Arrow icon" />
-              </a>
+              <Buttons
+                className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
+                content="Meet the Creator"
+                icon={arrow}
+                href="#creator"
+              />
             </div>
           </div>
         </div>

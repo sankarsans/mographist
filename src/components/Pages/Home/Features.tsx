@@ -1,5 +1,6 @@
-import React from "react";
-import VideoCarouselSection from "./VideoCarouselSection";
+import React from 'react';
+import VideoCarouselSection from './VideoCarouselSection';
+import Buttons from '../Common/Buttons';
 
 const Features = () => {
   return (
@@ -53,10 +54,7 @@ const Features = () => {
 
             {/* Right Column: CTA Button */}
             <div className="col-12 col-lg-auto d-flex justify-content-start justify-content-lg-end">
-              <a href="#projects" className="btn-view-projects">
-                View all projects
-                {/* <span aria-hidden="true">&rarr;</span> */}
-              </a>
+              <Buttons content="View all projects" href="#projects" />
             </div>
           </div>
         </div>

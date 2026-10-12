@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import logo from "../../../assets/mographist-logo.png";
-import line from "../../../assets/line.png";
+import React, { useState } from 'react';
+import logo from '../../../assets/mographist-logo.png';
+import line from '../../../assets/line.png';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    service: "",
-    requirements: "",
+    name: '',
+    email: '',
+    company: '',
+    service: '',
+    requirements: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -17,15 +17,15 @@ const ContactSection = () => {
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) {
-      errs.name = "Full name is required";
+      errs.name = 'Full name is required';
     }
     if (!formData.email.trim()) {
-      errs.email = "Email address is required";
+      errs.email = 'Email address is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = "Please enter a valid email address";
+      errs.email = 'Please enter a valid email address';
     }
     if (!formData.requirements.trim()) {
-      errs.requirements = "Please tell us about your requirements";
+      errs.requirements = 'Please tell us about your requirements';
     }
     return errs;
   };
@@ -34,7 +34,7 @@ const ContactSection = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
@@ -48,11 +48,11 @@ const ContactSection = () => {
       setSubmitted(true);
       setTimeout(() => {
         setFormData({
-          name: "",
-          email: "",
-          company: "",
-          service: "",
-          requirements: "",
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          requirements: '',
         });
         setSubmitted(false);
       }, 4000);
@@ -321,9 +321,9 @@ const ContactSection = () => {
               <div className="d-flex align-items-center gap-2 mt-4 pt-2">
                 <span
                   style={{
-                    fontSize: "0.8rem",
-                    color: "#71717a",
-                    marginRight: "0.5rem",
+                    fontSize: '0.8rem',
+                    color: '#71717a',
+                    marginRight: '0.5rem',
                   }}
                 >
                   Follow us:
@@ -385,7 +385,7 @@ const ContactSection = () => {
                 {submitted ? (
                   <div
                     className="alert alert-success border-0 rounded-4 py-3 text-center"
-                    style={{ backgroundColor: "#14532d", color: "#bbf7d0" }}
+                    style={{ backgroundColor: '#14532d', color: '#bbf7d0' }}
                   >
                     Thank you! Your message has been sent successfully.
                   </div>
@@ -404,7 +404,7 @@ const ContactSection = () => {
                           value={formData.name}
                           onChange={handleChange}
                           placeholder="John Doe"
-                          className={`form-control custom-input ${errors.name ? "is-invalid" : ""}`}
+                          className={`form-control custom-input ${errors.name ? 'is-invalid' : ''}`}
                         />
                         {errors.name && (
                           <div className="invalid-feedback">{errors.name}</div>
@@ -423,7 +423,7 @@ const ContactSection = () => {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="john@company.com"
-                          className={`form-control custom-input ${errors.email ? "is-invalid" : ""}`}
+                          className={`form-control custom-input ${errors.email ? 'is-invalid' : ''}`}
                         />
                         {errors.email && (
                           <div className="invalid-feedback">{errors.email}</div>
@@ -492,7 +492,7 @@ const ContactSection = () => {
                         value={formData.requirements}
                         onChange={handleChange}
                         placeholder="Tell us about your project, goals, timeline and budget..."
-                        className={`form-control custom-input ${errors.requirements ? "is-invalid" : ""}`}
+                        className={`form-control custom-input ${errors.requirements ? 'is-invalid' : ''}`}
                       ></textarea>
                       {errors.requirements && (
                         <div className="invalid-feedback">

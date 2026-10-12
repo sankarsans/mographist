@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import logo from '../../../assets/logo-svg.svg';
 import { NavLink } from 'react-router-dom';
+import Buttons from './Buttons';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -188,9 +189,7 @@ export default function Header() {
 
             {/* CTA Button */}
             <div className="ms-lg-3 mt-2 mt-lg-0">
-              <a href="#contact" className="btn btn-custom-cta">
-                Get in touch
-              </a>
+              <Buttons content="Get in touch" href="#contact" />
             </div>
           </div>
         </div>

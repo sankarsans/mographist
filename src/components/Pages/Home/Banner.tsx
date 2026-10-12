@@ -1,77 +1,158 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeBanner from '../../../assets/home-bg.png';
 import VideoBubble from '../../../assets/video-bubble.png';
 import PlayIcon from '../../../assets/play.png';
 
-const HeroBannerShowreel = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+// Slides/cards cycle during the initial phase
+const SHOWREEL_ITEMS = [
+  {
+    id: 1,
+    title: 'AI Automation',
+    tag: 'TRED',
+    bg: '#110b29',
+    video:
+      'https://pub-78dd9383d8f140169345b5d60e51ec50.r2.dev/showreel_rb_3cb270b007.mp4',
+  },
+  {
+    id: 2,
+    title: 'Motion Identity',
+    tag: 'Teachmint',
+    bg: '#00b2fe',
+    video:
+      'https://pub-78dd9383d8f140169345b5d60e51ec50.r2.dev/showreel_rb_3cb270b007.mp4',
+  },
+  {
+    id: 3,
+    title: 'Creative Tech',
+    tag: 'LivDemy',
+    bg: '#0a0a14',
+    video:
+      'https://pub-78dd9383d8f140169345b5d60e51ec50.r2.dev/showreel_rb_3cb270b007.mp4',
+  },
+];
+
+export default function HeroBannerShowreel() {
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
 
-  const onClick = () => {
-    setIsExpanded(true);
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
 
-  const handleClose = (e) => {
-    e.stopPropagation();
-    setIsExpanded(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
+      const rect = containerRef.current.getBoundingClientRect();
+      const scrollDistance =
+        containerRef.current.offsetHeight - window.innerHeight;
+
+      if (scrollDistance <= 0) return;
+
+      // Normalize scroll from 0.0 to 1.0
+      const currentProgress = Math.min(
+        Math.max(-rect.top / scrollDistance, 0),
+        1
+      );
+      setProgress(currentProgress);
+
+      // Cycle through slide cards during early scroll (0% -> 40%)
+      if (currentProgress < 0.4) {
+        const slideIndex = Math.min(
+          Math.floor((currentProgress / 0.4) * SHOWREEL_ITEMS.length),
+          SHOWREEL_ITEMS.length - 1
+        );
+        setActiveSlide(slideIndex);
+      }
+
+      // Auto-play / pause based on scroll expansion
+      if (videoRef.current) {
+        if (currentProgress > 0.1 && videoRef.current.paused) {
+          videoRef.current.play().catch(() => {});
+        } else if (currentProgress <= 0.05 && !videoRef.current.paused) {
+          videoRef.current.pause();
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // --- Dynamic Interpolations Based on Scroll Progress ---
+
+  // 1. Hero text opacity: fades out between 0% and 35% scroll
+  const textOpacity = Math.max(1 - progress / 0.35, 0);
+
+  // 2. Card expansion phase runs from 30% to 90% scroll
+  const expandProgress = Math.min(Math.max((progress - 0.3) / 0.6, 0), 1);
+
+  // Width & Height interpolate from small card to 100vw x 100vh
+  // Small state: ~320px wide, ~210px tall
+  const cardWidth = `calc(320px + (100vw - 320px) * ${expandProgress})`;
+  const cardHeight = `calc(210px + (100vh - 210px) * ${expandProgress})`;
+
+  // Smoothly moves card from bottom-right (right: 6%, bottom: 12%) to center screen (0%, 0%)
+  const rightOffset = (1 - expandProgress) * 6;
+  const bottomOffset = (1 - expandProgress) * 12;
+
+  // Border radius goes from 28px down to 0px as it fills the screen
+  const borderRadius = `${(1 - expandProgress) * 28}px`;
 
   return (
     <>
       <style>{`
-        .hero-section {
+        /* Scroll runway: gives 300vh for smooth step-by-step expansion */
+        .hero-scroll-track {
           position: relative;
-          // background-color: #f8f9fb;
-          /* Striped vertical background grid lines */
-          background-image: url(${HomeBanner});
-          background-size: calc(100% / 12) 100%;
-          min-height: 100vh;
+          height: 300vh;
+          background-color: #0b0114;
+        }
+
+        /* Sticky viewport locked to screen */
+        .hero-sticky-frame {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 9rem 0 2.5rem 0;
-          overflow: hidden;
+          padding: 8rem 0 2.5rem 0;
+          background-image: url(${HomeBanner});
+          background-size: calc(100% / 12) 100%;
           text-align: center;
         }
 
-        /* Top Tag */
         .hero-tag {
           color: rgba(255, 134, 0, 1);
-          font-size: 1.5rem;
+          font-size: 1.25rem;
           font-weight: 500;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           display: inline-flex;
           align-items: center;
           gap: 0.65rem;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
         }
 
         .hero-tag::before {
           content: "";
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background-color: rgba(255, 134, 0, 1);
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: rgba(255, 134, 0, 1);
         }
 
-        /* Main Big Heading */
         .hero-heading {
-          font-size: clamp(3.5rem, 12vw, 9rem);
+          font-size: clamp(3.5rem, 10vw, 8rem);
           font-weight: 900;
           line-height: 0.95;
           letter-spacing: 0.04em;
-          margin-bottom: 1.0rem;
+          margin-bottom: 1rem;
         }
 
         .text-ai {
@@ -79,22 +160,17 @@ const HeroBannerShowreel = () => {
         }
 
         .text-powered {
-          color: rgba(255, 255, 255, 1);
+          color: #ffffff;
           margin-left: 0.25em;
         }
 
-        /* Subtitle with Orange Accent Dot */
         .hero-subtitle {
-        
-          font-size: 2rem;
+          font-size: 1.75rem;
           font-weight: 400;
-          line-height: 1.25;
-          letter-spacing: -0.02em;
-          color: rgba(157, 157, 157, 1);
+          line-height: 1.35;
+          color: rgba(180, 180, 180, 1);
         }
 
-
-        /* Bottom Pipeline */
         .pipeline-bar {
           font-size: 0.72rem;
           font-weight: 600;
@@ -102,323 +178,127 @@ const HeroBannerShowreel = () => {
           color: rgba(158, 158, 158, 1);
           text-transform: uppercase;
           text-align: left;
-          span {
-                    padding: 0 1.3rem;
-
-          }
         }
 
-        /* Bubble Showreel Trigger Button */
-        .bubble-trigger-container {
+        .pipeline-bar span {
+          padding: 0 1.2rem;
+        }
+
+        /* --- Morphing Interactive Card --- */
+        .scroll-morph-card {
           position: absolute;
-          bottom: 14%;
-          right: 8%;
-          z-index: 5;
-        }
-
-        .bubble-btn {
-          width: 213px;
-          height: 213px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 35% 35%, #2a0845, #080112);
-          border: 1px solid rgba(168, 85, 247, 0.4);
-          box-shadow: 0 0 0 10px rgba(168, 85, 247, 0.08), 0 20px 40px rgba(0, 0, 0, 0.4);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-          user-select: none;
-          // position: relative;
-          &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, rgba(168, 85, 247, 0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
-        }
-
-        .bubble-btn:hover {
-          transform: scale(1.06);
-          box-shadow: 0 0 0 16px rgba(168, 85, 247, 0.15), 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .bubble-play-icon {
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.16);
-          backdrop-filter: blur(4px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 0.65rem;
-        }
-
-        .play-arrow {
-          width: 0;
-          height: 0;
-          border-top: 14px solid transparent;
-          border-bottom: 14px solid transparent;
-          border-left: 20px solid #ffffff;
-          margin-left: 2px;
-        }
-
-        .bubble-label {
-          font-size: 1.125rem;
-          font-weight: 600;
-          color: rgba(208, 188, 247, 1);
-          letter-spacing: 0.02em;
-        }
-
-        /* Expanding Bubble Video Canvas */
-        .bubble-video-overlay {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
           z-index: 20;
-          background-color: #000000;
-          /* Starts clipped to a 0% circle at the trigger location */
-          clip-path: circle(0% at 86% 76%);
-          transition: clip-path 0.85s cubic-bezier(0.77, 0, 0.175, 1);
-          pointer-events: none;
+          overflow: hidden;
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          will-change: width, height, right, bottom, border-radius;
+          transition: border-radius 0.1s linear;
+          background: #000;
         }
 
-        .bubble-video-overlay.active {
-          clip-path: circle(160% at 86% 76%);
-          pointer-events: all;
-        }
-
-        .banner-video-element {
+        .scroll-morph-card video {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          display: block;
         }
 
-        /* Close Floating Bubble Button */
-        .close-bubble-btn {
+        /* Slide pill overlay visible only before full expansion */
+        .card-pill-overlay {
           position: absolute;
-          top: 2rem;
-          right: 2.5rem;
-          z-index: 30;
-          background-color: rgba(255, 255, 255, 0.2);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.25rem;
-          cursor: pointer;
-          backdrop-filter: blur(10px);
-          transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .close-bubble-btn:hover {
-          background-color: rgba(255, 255, 255, 0.4);
-          transform: scale(1.1);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 991.98px) {
-          .bubble-trigger-container {
-            position: relative;
-            bottom: unset;
-            right: unset;
-            margin: 3rem 0;
-            display: flex;
-            justify-content: center;
-          }
-
-          .bubble-btn {
-            width: 145px;
-            height: 145px;
-          }
-
-          .bubble-video-overlay {
-            clip-path: circle(0% at 50% 75%);
-          }
-
-          .bubble-video-overlay.active {
-            clip-path: circle(160% at 50% 75%);
-          }
-        }
-          .showreel-outer-ring {
-          width: 240px;
-          height: 240px;
-          border-radius: 50%;
-          padding: 13.33px;
-          display: inline-flex;
-          align-items: center;
-          margin-top: 2rem;
-          justify-content: center;
-          cursor: pointer;
-          // background: #f7f8fa;
-          position: relative;
-          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);          float: right;
-
-        }
-
-        /* 1.33px Linear Gradient Border (rgba(74, 20, 184, 0.12) to rgba(74, 20, 184, 1)) */
-        .showreel-outer-ring::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: 50%;
-          padding: 1.33px;
-          background: linear-gradient(180deg, rgba(74, 20, 184, 0.12) 0%, rgba(74, 20, 184, 1) 100%);
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-
-        .showreel-outer-ring:hover {
-          transform: scale(1.05);
-        }
-
-        /* Inner Dark Circle with Retro Grid Pattern */
-        .showreel-inner-circle {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 13.33px;
-          position: relative;
-          overflow: hidden;
-          background-color: #0d0118;
-          /* Dark Gradient + Ambient Radial Glow */
-          background: url(${VideoBubble});
-          // box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        /* Translucent Play Disc */
-        .play-icon-disc {
-          width: 72px;
-          height: 72px;
-          border-radius: 50%;
-          background: url(${PlayIcon});
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-size: 100%;
-    background-repeat: no-repeat;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .showreel-btn-label {
-          color: rgba(208, 188, 247, 1);
-          font-size: 1.125rem;
+          bottom: 1.25rem;
+          left: 1.25rem;
+          padding: 0.4rem 1rem;
+          background: rgba(0, 0, 0, 0.65);
+          backdrop-filter: blur(8px);
+          border-radius: 999px;
+          color: #fff;
           font-weight: 600;
-          letter-spacing: -0.01em;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-          margin: 0;
-        }
-
-        @media (max-width: 576px) {
-          .showreel-outer-ring {
-            width: 180px;
-            height: 180px;
-            padding: 10px;
-          }
-          .play-icon-disc {
-            width: 42px;
-            height: 42px;
-          }
-          .showreel-btn-label {
-            font-size: 0.82rem;
-            
-          }
+          font-size: 0.85rem;
+          letter-spacing: 0.05em;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
         }
       `}</style>
 
-      <section className="hero-section">
-        {/* Top Text Content */}
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-xl-12 text-center pt-lg-5 mt-lg-5 pt-5">
-              <span className="hero-tag pt-lg-5 pt-0">
-                Creative Motion Studio
-              </span>
-
-              <h1 className="hero-heading">
-                <span className="text-ai">AI</span>
-                <span className="text-powered">POWERED</span>
-              </h1>
-
-              <div className="hero-subtitle">
-                {/* <span className="orange-dot"></span> */}
-                <span>
-                  Motion Graphics, Animation & AI powered<br></br> Video
-                  Production
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Circular Bubble Video Trigger */}
-        <div className="container">
+      {/* Runway wrapper providing scrolling space */}
+      <section className="hero-scroll-track" ref={containerRef}>
+        <div className="hero-sticky-frame">
+          {/* Hero text (fades as user scrolls down) */}
           <div
-            className="showreel-outer-ring"
-            onClick={onClick}
-            role="button"
-            tabIndex={0}
-            aria-label="Watch Showreel"
+            className="container"
+            style={{
+              opacity: textOpacity,
+              transform: `translateY(-${progress * 80}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
           >
-            <div className="showreel-inner-circle">
-              <div className="play-icon-disc">
-                {/* <div className="play-triangle-shape"></div> */}
+            <div className="row">
+              <div className="col-12 text-center pt-lg-5 mt-lg-5">
+                <span className="hero-tag pt-lg-5">Creative Motion Studio</span>
+                <h1 className="hero-heading">
+                  <span className="text-ai">AI</span>
+                  <span className="text-powered">POWERED</span>
+                </h1>
+                <div className="hero-subtitle">
+                  <span>
+                    Motion Graphics, Animation & AI powered
+                    <br /> Video Production
+                  </span>
+                </div>
               </div>
-              <p className="showreel-btn-label">Watch Showreel</p>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Workflow Pipeline */}
-        <div className="container mt-4">
-          <div className="pipeline-bar">
-            <span>Concept</span>/ <span>Production</span>/ <span>Post</span>/
-            <span>Delivery</span>
+          {/* Bottom pipeline labels */}
+          <div className="container mt-2" style={{ opacity: textOpacity }}>
+            <div className="pipeline-bar">
+              <span>Concept</span> / <span>Production</span> / <span>Post</span>{' '}
+              / <span>Delivery</span>
+            </div>
           </div>
-        </div>
 
-        {/* Bubble Zoom-In / Zoom-Out Overlay Layer */}
-        <div className={`bubble-video-overlay ${isExpanded ? 'active' : ''}`}>
-          <button
-            type="button"
-            className="close-bubble-btn"
-            onClick={handleClose}
-            aria-label="Close Showreel Video"
+          {/* Morphing Video Card (expands smoothly to 100vw x 100vh) */}
+          <div
+            className="scroll-morph-card"
+            style={{
+              width: cardWidth,
+              height: cardHeight,
+              right: `${rightOffset}vw`,
+              bottom: `${bottomOffset}vh`,
+              borderRadius: borderRadius,
+              pointerEvents: expandProgress > 0.85 ? 'all' : 'none',
+            }}
           >
-            ✕
-          </button>
-          <video
-            ref={videoRef}
-            className="banner-video-element"
-            src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"
-            loop
-            playsInline
-            muted
-          />
+            <video
+              ref={videoRef}
+              key={SHOWREEL_ITEMS[activeSlide].video}
+              src={SHOWREEL_ITEMS[activeSlide].video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onError={(e) => {
+                console.error('Video failed to load:', e.currentTarget.error);
+              }}
+              onLoadedData={() => {
+                console.log('Video loaded successfully!');
+              }}
+            />
+
+            {/* Project tag pill (hidden once expanded) */}
+            <div
+              className="card-pill-overlay"
+              style={{
+                opacity: Math.max(1 - expandProgress * 3, 0),
+              }}
+            >
+              {SHOWREEL_ITEMS[activeSlide].tag}
+            </div>
+          </div>
         </div>
       </section>
     </>
   );
-};
-
-export default HeroBannerShowreel;
+}
