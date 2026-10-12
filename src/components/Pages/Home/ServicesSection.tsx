@@ -1,130 +1,134 @@
-import { useState, useRef, useEffect } from "react";
-import arrowNew from "../../../assets/arrow-new.png";
+import { useState, useRef, useEffect } from 'react';
+import arrowNew from '../../../assets/arrow-new.png';
+import VideoPoster from '../../../assets/video-poster.png';
+
 const servicesData = [
   {
-    id: "01",
-    title: "Live Action Video Production",
+    id: '01',
+    title: 'Live Action Video Production',
     description:
-      "High-end on-location cinematography, directing, and full set production.",
+      'High-end on-location cinematography, directing, and full set production.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Location Scouting", "Directing", "Cinema Cameras", "Studio Shoots"],
+      'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Location Scouting', 'Directing', 'Cinema Cameras', 'Studio Shoots'],
   },
   {
-    id: "02",
-    title: "Commercial & Product Videos",
+    id: '02',
+    title: 'Commercial & Product Videos',
     description:
-      "Professional video production services for brands, business, products and campaigns.",
+      'Professional video production services for brands, business, products and campaigns.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-modern-smartphone-with-a-green-screen-42993-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-modern-smartphone-with-a-green-screen-42993-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
     tags: [
-      "Corporate Film",
-      "Promotional Videos",
-      "Brand Storytelling",
-      "Product Launches",
+      'Corporate Film',
+      'Promotional Videos',
+      'Brand Storytelling',
+      'Product Launches',
     ],
   },
   {
-    id: "03",
-    title: "Event Coverage & Content Creation",
+    id: '03',
+    title: 'Event Coverage & Content Creation',
     description:
-      "Multi-camera live setups, recaps, keynotes, and festival highlights.",
+      'Multi-camera live setups, recaps, keynotes, and festival highlights.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-at-a-club-festival-42698-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-dj-mixing-music-at-a-club-festival-42698-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Live Streaming", "Keynotes", "Festivals", "Event Recaps"],
+      'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Live Streaming', 'Keynotes', 'Festivals', 'Event Recaps'],
   },
   {
-    id: "04",
-    title: "Animation & Motion Graphics",
+    id: '04',
+    title: 'Animation & Motion Graphics',
     description:
-      "Dynamic 2D/3D motion graphics, kinetic typography, and character animations.",
+      'Dynamic 2D/3D motion graphics, kinetic typography, and character animations.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-tree-branches-in-the-breeze-1188-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-tree-branches-in-the-breeze-1188-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
-    tags: ["3D Modeling", "Explainer Videos", "Kinetic Typography", "VFX"],
+      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
+    tags: ['3D Modeling', 'Explainer Videos', 'Kinetic Typography', 'VFX'],
   },
   {
-    id: "05",
-    title: "AI Powered Content Creation",
+    id: '05',
+    title: 'AI Powered Content Creation',
     description:
-      "Next-gen synthetic media, AI enhancements, and hyper-personalized video scaling.",
+      'Next-gen synthetic media, AI enhancements, and hyper-personalized video scaling.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Generative AI", "Voice Cloning", "Automation", "Virtual Avatars"],
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Generative AI', 'Voice Cloning', 'Automation', 'Virtual Avatars'],
   },
   {
-    id: "06",
-    title: "Virtual Production And Interactive Design",
+    id: '06',
+    title: 'Virtual Production And Interactive Design',
     description:
-      "Real-time Unreal Engine environments with seamless LED volume integration.",
+      'Real-time Unreal Engine environments with seamless LED volume integration.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-1610-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-1610-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Unreal Engine", "LED Walls", "XR Experiences", "Interactive 3D"],
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Unreal Engine', 'LED Walls', 'XR Experiences', 'Interactive 3D'],
   },
   {
-    id: "07",
-    title: "Post Production Services",
+    id: '07',
+    title: 'Post Production Services',
     description:
-      "Precision color grading, sound design, compositing, and master delivery.",
+      'Precision color grading, sound design, compositing, and master delivery.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Color Grading", "Sound Design", "Foley", "VFX Cleanups"],
+      'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Color Grading', 'Sound Design', 'Foley', 'VFX Cleanups'],
   },
   {
-    id: "08",
-    title: "SaaS & Technology Content",
+    id: '08',
+    title: 'SaaS & Technology Content',
     description:
-      "Software walkthroughs, feature demos, and investor pitch visual decks.",
+      'Software walkthroughs, feature demos, and investor pitch visual decks.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-39962-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-39962-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Product Demos", "UI Walkthroughs", "SaaS Promos", "Tech Tutorials"],
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Product Demos', 'UI Walkthroughs', 'SaaS Promos', 'Tech Tutorials'],
   },
   {
-    id: "09",
-    title: "Cyber Security Awareness Content",
+    id: '09',
+    title: 'Cyber Security Awareness Content',
     description:
-      "Engaging, narrative-driven training modules and enterprise security explainers.",
+      'Engaging, narrative-driven training modules and enterprise security explainers.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-server-room-rack-with-flashing-led-lights-42544-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-server-room-rack-with-flashing-led-lights-42544-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
     tags: [
-      "Phishing Simulations",
-      "Enterprise Training",
-      "Data Privacy",
-      "Compliance",
+      'Phishing Simulations',
+      'Enterprise Training',
+      'Data Privacy',
+      'Compliance',
     ],
   },
   {
-    id: "10",
-    title: "Social Media & Content Creation",
+    id: '10',
+    title: 'Social Media & Content Creation',
     description:
-      "High-retention vertical reels, TikTok campaigns, and viral social cuts.",
+      'High-retention vertical reels, TikTok campaigns, and viral social cuts.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-scrolling-social-media-42994-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-scrolling-social-media-42994-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
-    tags: ["9:16 Vertical", "TikTok & Reels", "Short Form", "Trend Jacking"],
+      'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
+    tags: ['9:16 Vertical', 'TikTok & Reels', 'Short Form', 'Trend Jacking'],
   },
 ];
+const videoData =
+  'https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4';
 
 const DynamicServicesShowcase = () => {
-  const [activeId, setActiveId] = useState("01");
+  const [activeId, setActiveId] = useState('01');
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -375,8 +379,8 @@ const DynamicServicesShowcase = () => {
                       <button
                         key={service.id}
                         type="button"
-                        onClick={() => setActiveId(service.id)}
-                        className={`service-item ${isActive ? "active" : ""}`}
+                        onMouseEnter={() => setActiveId(service.id)}
+                        className={`service-item ${isActive ? 'active' : ''}`}
                       >
                         <span className="service-id">{service.id}</span>
                         <span>{service.title}</span>
@@ -399,8 +403,8 @@ const DynamicServicesShowcase = () => {
                   <video
                     ref={videoRef}
                     className="showcase-video"
-                    src={currentService.videoSrc}
-                    poster={currentService.poster}
+                    src={videoData}
+                    poster={VideoPoster}
                     playsInline
                     loop
                     muted
@@ -411,7 +415,7 @@ const DynamicServicesShowcase = () => {
                   <button
                     type="button"
                     className="btn play-btn"
-                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                    aria-label={isPlaying ? 'Pause video' : 'Play video'}
                     onClick={(e) => {
                       e.stopPropagation();
                       togglePlay();
@@ -426,21 +430,6 @@ const DynamicServicesShowcase = () => {
                       <div className="play-icon"></div>
                     )}
                   </button>
-
-                  {/* Dynamic Bottom Notch Description */}
-                  {/* <div
-                    className="card-footer-box"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <p>{currentService.description}</p>
-                    <a
-                      href={`#service-${currentService.id}`}
-                      className="external-btn"
-                      aria-label={`View details for ${currentService.title}`}
-                    >
-                      &#8599;
-                    </a>
-                  </div> */}
                 </div>
 
                 {/* Dynamic Categorical Tags */}

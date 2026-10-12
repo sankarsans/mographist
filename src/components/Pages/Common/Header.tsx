@@ -1,32 +1,80 @@
-import { useState } from "react";
-import logo from "../../../assets/logo.png"; // Adjust the path to your logo image
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import logo from '../../../assets/logo-svg.svg';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
-  // Custom Smooth Scroll Interceptor
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleNavbar = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Blur/solidify background once scrolled past 50px
+      setIsScrolled(currentScrollY > 50);
+
+      // Don't auto-hide if mobile menu is currently expanded
+      if (isOpen) return;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down -> hide navbar
+        setIsVisible(false);
+      } else {
+        // Scrolling up -> show navbar
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);
 
   return (
     <>
       <style>{`
-      .navbar { 
         .custom-navbar {
-          background-color: #f9fafb;
-          /* Subtle grid pattern matching the layout background */
-          background-image: 
-            linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-          background-size: 80px 80px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-          padding: 1rem 0;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1030;
+          transition: transform 0.35s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+          background-color: transparent;
+          // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 1.25rem 0;
+          .container{
+            background-color: #18152A;
+            border-radius: 50px;
+            padding: 6px 40px;
+          }
+        }
+
+        /* Slide header out of view on scroll down */
+        .custom-navbar.navbar-hidden {
+          transform: translateY(-100%);
+        }
+
+        /* Frosted glass / backdrop once scrolled past top banner */
+        .custom-navbar.navbar-scrolled {
+          // background-color: rgba(255, 255, 255, 0.92);
+          // backdrop-filter: blur(8px);
+          // border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+          // padding: 0.85rem 0;
+          // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          border: none;
         }
 
         .nav-link-custom {
-          color: #212529 !important;
-          font-size: 1rem;
-          font-weight: 600;
+          color: #fff !important;
+          font-size: 0.875rem;
+          font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           transition: opacity 0.2s ease;
@@ -42,7 +90,7 @@ export default function Header() {
           color: #ffffff;
           font-size: 0.875rem;
           font-weight: 400;
-          border-radius: 12px;
+          border-radius: 60px;
           padding: 0.65rem 1.2rem;
           border: none;
           display: inline-flex;
@@ -57,41 +105,33 @@ export default function Header() {
           transform: translateY(-1px);
         }
 
-        .logo-text {
-          
-          font-weight: 800;
-          font-size: 1.75rem;
-          line-height: 1;
-          letter-spacing: -1.5px;
-          color: #111827;
-          position: relative;
+        /* Ensure mobile dropdown stays readable over banner background */
+        @media (max-width: 991.98px) {
+          .navbar-collapse.show {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-top: 0.75rem;
+            .nav-link-custom {
+              color: #000 !important;}
+          }
         }
-
-        .logo-dot {
-          display: inline-block;
-          width: 6px;
-          height: 6px;
-          background-color: #f97316;
-          border-radius: 50%;
-          margin-left: 2px;
-          vertical-align: middle;
-        }
-      }
       `}</style>
 
-      <nav className="navbar navbar-expand-lg custom-navbar">
+      <nav
+        className={`navbar navbar-expand-lg custom-navbar ${
+          !isVisible ? 'navbar-hidden' : ''
+        } ${isScrolled ? 'navbar-scrolled' : ''}`}
+      >
         <div className="container">
           {/* Brand Logo */}
-          <a className="navbar-brand d-flex align-items-center" href="#home">
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                `nav-link nav-link-custom ${isActive ? "active" : ""}`
-              }
-            >
-              <img src={logo} alt="Logo" width="60%" className="me-2" />
-            </NavLink>
-          </a>
+          <NavLink
+            to="/home"
+            className="navbar-brand d-flex align-items-center"
+          >
+            <img src={logo} alt="Logo" width="100%" className="me-2" />
+          </NavLink>
 
           {/* Mobile Hamburger Toggle */}
           <button
@@ -107,7 +147,7 @@ export default function Header() {
 
           {/* Collapsible Menu */}
           <div
-            className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}
             id="navbarContent"
           >
             <ul className="navbar-nav ms-auto align-items-lg-center my-3 my-lg-0 gap-lg-1">
@@ -115,7 +155,7 @@ export default function Header() {
                 <NavLink
                   to="/works"
                   className={({ isActive }) =>
-                    `nav-link nav-link-custom ${isActive ? "active" : ""}`
+                    `nav-link nav-link-custom ${isActive ? 'active' : ''}`
                   }
                   onClick={() => setIsOpen(false)}
                 >
@@ -126,7 +166,7 @@ export default function Header() {
                 <NavLink
                   to="/services"
                   className={({ isActive }) =>
-                    `nav-link nav-link-custom ${isActive ? "active" : ""}`
+                    `nav-link nav-link-custom ${isActive ? 'active' : ''}`
                   }
                   onClick={() => setIsOpen(false)}
                 >
@@ -137,7 +177,7 @@ export default function Header() {
                 <NavLink
                   to="/about"
                   className={({ isActive }) =>
-                    `nav-link nav-link-custom ${isActive ? "active" : ""}`
+                    `nav-link nav-link-custom ${isActive ? 'active' : ''}`
                   }
                   onClick={() => setIsOpen(false)}
                 >
@@ -150,7 +190,6 @@ export default function Header() {
             <div className="ms-lg-3 mt-2 mt-lg-0">
               <a href="#contact" className="btn btn-custom-cta">
                 Get in touch
-                <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </div>

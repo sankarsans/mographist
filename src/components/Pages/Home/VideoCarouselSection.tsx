@@ -1,69 +1,109 @@
-import React, { useState, useRef, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useRef, useEffect, useCallback } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const carouselSlides = [
   {
-    id: "01",
-    badge: "Brand film",
-    title: "Precision Craftsmanship And Typesetting",
+    id: '01',
+    badge: 'Brand film',
+    title: 'Precision Craftsmanship And Typesetting',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    id: "02",
-    badge: "Brand film",
+    id: '02',
+    badge: 'Brand film',
     title:
-      "Simply Dummy Text Of The Printing And Type Industry. Lorem Ipsum Has Been.",
+      'Simply Dummy Text Of The Printing And Type Industry. Lorem Ipsum Has Been.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    id: "03",
-    badge: "Brand film",
-    title: "Simply Dummy Text Of The Printing And Industry. Lorem Ipsum.",
+    id: '03',
+    badge: 'Brand film',
+    title: 'Simply Dummy Text Of The Printing And Industry. Lorem Ipsum.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-modern-smartphone-with-a-green-screen-42993-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-modern-smartphone-with-a-green-screen-42993-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    id: "04",
-    badge: "Commercial",
-    title: "Next-Generation Dynamic Product Visuals & Motion.",
+    id: '04',
+    badge: 'Commercial',
+    title: 'Next-Generation Dynamic Product Visuals & Motion.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-39962-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-39962-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    id: "05",
-    badge: "Animation",
-    title: "Hyper-Realistic 3D Renders and Futuristic Worlds.",
+    id: '05',
+    badge: 'Animation',
+    title: 'Hyper-Realistic 3D Renders and Futuristic Worlds.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-1610-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-1610-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    id: "06",
-    badge: "Showcase",
-    title: "Creative Multi-Format Digital Delivery & Sound.",
+    id: '06',
+    badge: 'Showcase',
+    title: 'Creative Multi-Format Digital Delivery & Sound.',
     videoSrc:
-      "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
+      'https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4',
     poster:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+      'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
   },
 ];
 
 const VideoCarouselSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0); // usually starts at 0
   const [isPlaying, setIsPlaying] = useState(false);
   const activeVideoRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
+  // 1. Memoize handleNext so it can be referenced inside effects
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) =>
+      prev === carouselSlides.length - 1 ? 0 : prev + 1
+    );
+  }, [carouselSlides.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? carouselSlides.length - 1 : prev - 1
+    );
+  };
+
+  useEffect(() => {
+    if (isPlaying || isHovered) return; // Pause if playing video or user is hovering
+
+    const timer = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [isPlaying, isHovered, currentIndex, handleNext]);
+
+  // 2. Auto-scroll interval: advances every 5 seconds (5000ms)
+  useEffect(() => {
+    // Pause auto-scroll if a slide's video is currently playing
+    if (isPlaying) return;
+
+    const AUTO_SCROLL_DELAY = 3000; // Change delay in ms here
+
+    const timer = setInterval(() => {
+      handleNext();
+    }, AUTO_SCROLL_DELAY);
+
+    // Clear timer when slide changes, component unmounts, or video starts playing
+    return () => clearInterval(timer);
+  }, [isPlaying, currentIndex, handleNext]);
+
+  // 3. Reset video state on slide change
   useEffect(() => {
     if (activeVideoRef.current) {
       activeVideoRef.current.pause();
@@ -71,18 +111,6 @@ const VideoCarouselSection = () => {
       setIsPlaying(false);
     }
   }, [currentIndex]);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? carouselSlides.length - 1 : prev - 1,
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === carouselSlides.length - 1 ? 0 : prev + 1,
-    );
-  };
 
   const togglePlay = () => {
     if (!activeVideoRef.current) return;
@@ -351,25 +379,27 @@ const VideoCarouselSection = () => {
           <div className="carousel-stage">
             {carouselSlides.map((slide, index) => {
               const total = carouselSlides.length;
-              let position = "hidden";
+              let position = 'hidden';
 
               if (index === currentIndex) {
-                position = "active";
+                position = 'active';
               } else if (index === (currentIndex - 1 + total) % total) {
-                position = "prev";
+                position = 'prev';
               } else if (index === (currentIndex + 1) % total) {
-                position = "next";
+                position = 'next';
               }
 
-              const isActive = position === "active";
+              const isActive = position === 'active';
 
               return (
                 <div
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                   key={slide.id}
                   className={`slide-card ${position}`}
                   onClick={() => {
-                    if (position === "prev") handlePrev();
-                    if (position === "next") handleNext();
+                    if (position === 'prev') handlePrev();
+                    if (position === 'next') handleNext();
                     if (isActive) togglePlay();
                   }}
                 >

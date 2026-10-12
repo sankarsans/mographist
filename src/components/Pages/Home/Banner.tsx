@@ -1,5 +1,8 @@
-import React, { useState, useRef } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useRef } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomeBanner from '../../../assets/home-bg.png';
+import VideoBubble from '../../../assets/video-bubble.png';
+import PlayIcon from '../../../assets/play.png';
 
 const HeroBannerShowreel = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,11 +29,11 @@ const HeroBannerShowreel = () => {
       <style>{`
         .hero-section {
           position: relative;
-          background-color: #f8f9fb;
+          // background-color: #f8f9fb;
           /* Striped vertical background grid lines */
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+          background-image: url(${HomeBanner});
           background-size: calc(100% / 12) 100%;
-          min-height: 90vh;
+          min-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -67,8 +70,8 @@ const HeroBannerShowreel = () => {
           font-size: clamp(3.5rem, 12vw, 9rem);
           font-weight: 900;
           line-height: 0.95;
-          letter-spacing: -0.04em;
-          margin-bottom: 2rem;
+          letter-spacing: 0.04em;
+          margin-bottom: 1.0rem;
         }
 
         .text-ai {
@@ -82,25 +85,14 @@ const HeroBannerShowreel = () => {
 
         /* Subtitle with Orange Accent Dot */
         .hero-subtitle {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
+        
           font-size: 2rem;
           font-weight: 400;
           line-height: 1.25;
           letter-spacing: -0.02em;
           color: rgba(157, 157, 157, 1);
-          max-width: 820px;
         }
 
-        // .orange-dot {
-        //   width: 28px;
-        //   height: 28px;
-        //   min-width: 28px;
-        //   background-color: rgba(255, 134, 0, 1);
-        //   border-radius: 50%;
-        //   margin-top: 0.75rem;
-        // }
 
         /* Bottom Pipeline */
         .pipeline-bar {
@@ -269,9 +261,10 @@ const HeroBannerShowreel = () => {
           padding: 13.33px;
           display: inline-flex;
           align-items: center;
+          margin-top: 2rem;
           justify-content: center;
           cursor: pointer;
-          background: #f7f8fa;
+          // background: #f7f8fa;
           position: relative;
           transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);          float: right;
 
@@ -309,38 +302,22 @@ const HeroBannerShowreel = () => {
           overflow: hidden;
           background-color: #0d0118;
           /* Dark Gradient + Ambient Radial Glow */
-          background-image: 
-            /* Subtle Grid Lines */
-            linear-gradient(to right, rgba(147, 51, 234, 0.2) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(147, 51, 234, 0.2) 1px, transparent 1px),
-            /* Radial Core Glow */
-            radial-gradient(circle at 50% 25%, rgba(59, 20, 184, 0.75) 0%, #080014 85%);
-          background-size: 20px 20px, 20px 20px, 100% 100%;
-          box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+          background: url(${VideoBubble});
+          // box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
         /* Translucent Play Disc */
         .play-icon-disc {
-          width: 64px;
-          height: 64px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.16);
-          backdrop-filter: blur(8px);
-          // border: 1px solid rgba(255, 255, 255, 0.25);
+          background: url(${PlayIcon});
           display: flex;
           align-items: center;
           justify-content: center;
+          background-size: 100%;
+    background-repeat: no-repeat;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Triangle Play Shape */
-        .play-triangle-shape {
-          width: 0;
-          height: 0;
-          border-top: 12px solid transparent;
-          border-bottom: 12px solid transparent;
-          border-left: 20px solid #ffffff;
-          margin-left: 3px;
         }
 
         .showreel-btn-label {
@@ -373,8 +350,10 @@ const HeroBannerShowreel = () => {
         {/* Top Text Content */}
         <div className="container">
           <div className="row">
-            <div className="col-12 col-xl-10">
-              <span className="hero-tag">Creative Motion Studio</span>
+            <div className="col-12 col-xl-12 text-center pt-lg-5 mt-lg-5 pt-5">
+              <span className="hero-tag pt-lg-5 pt-0">
+                Creative Motion Studio
+              </span>
 
               <h1 className="hero-heading">
                 <span className="text-ai">AI</span>
@@ -384,7 +363,8 @@ const HeroBannerShowreel = () => {
               <div className="hero-subtitle">
                 {/* <span className="orange-dot"></span> */}
                 <span>
-                  Motion Graphics, Animation & AI powered Video Production
+                  Motion Graphics, Animation & AI powered<br></br> Video
+                  Production
                 </span>
               </div>
             </div>
@@ -402,7 +382,7 @@ const HeroBannerShowreel = () => {
           >
             <div className="showreel-inner-circle">
               <div className="play-icon-disc">
-                <div className="play-triangle-shape"></div>
+                {/* <div className="play-triangle-shape"></div> */}
               </div>
               <p className="showreel-btn-label">Watch Showreel</p>
             </div>
@@ -418,7 +398,7 @@ const HeroBannerShowreel = () => {
         </div>
 
         {/* Bubble Zoom-In / Zoom-Out Overlay Layer */}
-        <div className={`bubble-video-overlay ${isExpanded ? "active" : ""}`}>
+        <div className={`bubble-video-overlay ${isExpanded ? 'active' : ''}`}>
           <button
             type="button"
             className="close-bubble-btn"
