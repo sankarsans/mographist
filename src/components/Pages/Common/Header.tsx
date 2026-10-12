@@ -197,7 +197,7 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/services"
+                  to="/home#ServicesSection"
                   className={({ isActive }) =>
                     `nav-link nav-link-custom ${isActive ? 'active' : ''}`
                   }
@@ -221,7 +221,11 @@ export default function Header() {
 
             {/* CTA Button */}
             <div className="ms-lg-3 mt-2 mt-lg-0">
-              <Buttons content="Get in touch" href="#contact" />
+              <Buttons
+                content="Get in touch"
+                link="/home#ContactSection"
+                href="false"
+              />
             </div>
           </div>
         </div>

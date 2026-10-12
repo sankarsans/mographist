@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 html {
   scroll-behavior: auto;
 }
 
 body {
-  font-family: "Onest", sans-serif;
+  font-family: 'Onest', sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
@@ -28,7 +28,7 @@ body {
 }
 
 .section-tag::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 9px;
   height: 9px;
@@ -50,6 +50,14 @@ body {
   .highlight {
     color: rgba(58, 36, 181, 1);
   }
+}
+
+.sub-heading {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(0, 0, 0, 1);
 }
 
 .faq-subtitle {

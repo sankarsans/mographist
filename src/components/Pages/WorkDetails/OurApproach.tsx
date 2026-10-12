@@ -1,5 +1,3 @@
-import React from 'react';
-
 const col1Images = [
   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
@@ -18,7 +16,7 @@ const col3Images = [
   'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
 ];
 
-export default function CurvedVisualMoments() {
+export default function OurApproach() {
   return (
     <>
       {/* 

@@ -80,7 +80,7 @@ const StoryWork = () => {
         .story-sticky-viewport {
           position: sticky;
           top: 0;
-          min-height: 90vh;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;

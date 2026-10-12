@@ -1,27 +1,29 @@
-import React from "react";
+import Logo from '../../../assets/logo-svg.svg';
+import Location from '../../../assets/location-icon.png';
+import { Link } from 'react-router-dom';
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: 'Home', url: '/home' },
+  { label: 'About', url: '/about' },
+  { label: 'Services', href: '/home#ServicesSection' },
+  { label: 'Portfolio', url: '/works' },
+  { label: 'Contact', href: '/home#ContactSection' },
 ];
 
 const serviceLinks = [
-  { label: "Video Production", href: "#video-production" },
-  { label: "Motion Graphics", href: "#motion-graphics" },
-  { label: "Animation", href: "#animation" },
-  { label: "AI Powered Content", href: "#ai-content" },
-  { label: "Post Production", href: "#post-production" },
+  { label: 'Video Production', href: '#video-production' },
+  { label: 'Motion Graphics', href: '#motion-graphics' },
+  { label: 'Animation', href: '#animation' },
+  { label: 'AI Powered Content', href: '#ai-content' },
+  { label: 'Post Production', href: '#post-production' },
 ];
 
 const industryLinks = [
-  { label: "SaaS Product Videos", href: "#saas" },
-  { label: "Cybersecurity Content", href: "#cybersecurity" },
-  { label: "Digital Marketing", href: "#marketing" },
-  { label: "Corporate Films", href: "#corporate" },
-  { label: "Brand Campaigns", href: "#campaigns" },
+  { label: 'SaaS Product Videos', href: '#saas' },
+  { label: 'Cybersecurity Content', href: '#cybersecurity' },
+  { label: 'Digital Marketing', href: '#marketing' },
+  { label: 'Corporate Films', href: '#corporate' },
+  { label: 'Brand Campaigns', href: '#campaigns' },
 ];
 
 const Footer = () => {
@@ -31,42 +33,39 @@ const Footer = () => {
         .site-footer {
           background-color: #09090b;
           color: #ffffff;
-          padding: 5rem 0 2rem 0;
-          
+          padding: 5rem 0 2rem 0;  
           border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-brand-logo {
-          width: 38px;
-          height: 38px;
-          border-radius: 8px;
-          background-color: #ffffff;
+          width: 37px;
+          height: 37px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 4px;
+          padding-right: 4px;
         }
 
         .brand-name {
           font-size: 1.25rem;
-          font-weight: 700;
+          font-weight: 400;
           letter-spacing: -0.02em;
           color: #ffffff;
           margin-bottom: 0;
         }
 
         .footer-desc {
-          color: rgba(255, 255, 255, 0.3);
+          color: #767676;
           font-size: 0.875rem;
           line-height: 1.6;
           max-width: 320px;
-          margin: 1.5rem 0 2rem 0;
+          margin: 1.0rem 0 1rem 0;
         }
 
         /* Social Icons */
         .social-btn {
-          width: 36px;
-          height: 36px;
+          width: 34px;
+          height: 34px;
           border-radius: 50%;
           border: 1px solid rgba(255, 255, 255, 0.1);
           display: inline-flex;
@@ -87,7 +86,7 @@ const Footer = () => {
         .footer-column-title {
           color: rgba(255, 255, 255, 0.6);
           font-size: 0.75rem;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           margin-bottom: 1.75rem;
@@ -125,6 +124,7 @@ const Footer = () => {
         .sub-footer-link {
           color: rgba(255, 255, 255, 0.2);
           font-size: 0.82rem;
+          font-weight: 400;
         }
 
         .sub-footer-link {
@@ -145,17 +145,7 @@ const Footer = () => {
             <div className="col-12 col-lg-4">
               <div className="d-flex align-items-center gap-2">
                 <div className="footer-brand-logo">
-                  <svg viewBox="0 0 40 40" width="100%" height="100%">
-                    <path
-                      d="M6 30V10L16 26L26 10V30"
-                      fill="none"
-                      stroke="#3b28cc"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="28" cy="22" r="3" fill="#f97316" />
-                  </svg>
+                  <img src={`${Logo}`} width={'100%'} alt="Mographist Logo" />
                 </div>
                 <span className="brand-name">Mographist</span>
               </div>
@@ -163,6 +153,15 @@ const Footer = () => {
               <p className="footer-desc">
                 Creative Media Production and Post Production House. We bring
                 stories to life through motion, video, animation, and AI.
+              </p>
+              <p className="footer-desc">
+                <img
+                  src={`${Location}`}
+                  width="16"
+                  height="16"
+                  alt="Location Icon"
+                />{' '}
+                Bangalore, Karnataka 560102
               </p>
 
               <div className="d-flex align-items-center gap-2">
@@ -234,9 +233,15 @@ const Footer = () => {
               <ul className="footer-nav-list">
                 {quickLinks.map((item, idx) => (
                   <li key={idx}>
-                    <a href={item.href} className="footer-link">
-                      {item.label}
-                    </a>
+                    {item?.url ? (
+                      <Link to={item?.url} className="footer-link">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a href={item?.href} className="footer-link">
+                        {item.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

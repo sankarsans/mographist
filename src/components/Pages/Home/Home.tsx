@@ -1,11 +1,11 @@
-import Features from "./Features";
-import ServicesSection from "./ServicesSection";
-import CreativeProcess from "./CreativeProcess";
-import TestimonialsSection from "./TestimonialsSection";
-import FAQSection from "./FAQSection";
-import Banner from "./Banner";
-import ContactSection from "../Common/ContactSection";
-import Why from "./Why";
+import Features from './Features';
+import ServicesSection from './ServicesSection';
+import CreativeProcess from './CreativeProcess';
+import TestimonialsSection from './TestimonialsSection';
+import FAQSection from './FAQSection';
+import Banner from './Banner';
+import ContactSection from '../Common/ContactSection';
+import Why from './Why';
 
 export default function Home() {
   return (
@@ -21,7 +21,9 @@ export default function Home() {
       <CreativeProcess />
       <TestimonialsSection />
       <FAQSection />
-      <ContactSection />
+      <div id="ContactSection">
+        <ContactSection />
+      </div>
     </div>
   );
 }

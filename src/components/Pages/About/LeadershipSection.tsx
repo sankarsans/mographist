@@ -257,18 +257,11 @@ const LeadershipSection = () => {
               <h3 className="member-name">Chetan R Vanahalli</h3>
 
               <p className="sub-description mb-3">
-                With over 10 years of professional experience in video
-                production, motion graphics design, animation, and post
-                production, Chetan leads the media and production division of
-                Mographist OPC Pvt. Ltd.
-              </p>
-
-              <p className="sub-description mb-3">
-                His expertise spans video production, motion graphics,
-                animation, visual effects, digital content creation, and
-                emerging technologies. By combining creative storytelling with
-                technical excellence, he helps businesses transform ideas into
-                engaging visual experiences that deliver measurable results.
+                With over 10 years of experience in video production, motion
+                graphics, animation, and post-production, Chetan leads the media
+                and production division at Mographist OPC Pvt. Ltd., creating
+                engaging visual experiences through creative storytelling and
+                technical expertise.
               </p>
 
               <Buttons

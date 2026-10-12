@@ -66,7 +66,8 @@ const Contact = () => {
             className="btn btn-outline-light px-5 py-3 mt-2 border-0 shadow-sm"
             content="Get in Touch"
             icon={arrow}
-            href="#contact"
+            link="/home#ContactSection"
+            href="false"
           />
         </div>
       </div>

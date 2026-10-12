@@ -38,7 +38,8 @@ export default function AboutBanner() {
                 className="btn btn-outline-light px-4 mt-4 border-0 shadow-sm"
                 content="Start a Project"
                 icon={arrow}
-                href="#contact"
+                link="/home#ContactSection"
+                href="false"
               />
             </div>
           </div>

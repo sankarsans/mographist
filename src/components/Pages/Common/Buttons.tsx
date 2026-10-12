@@ -1,14 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Buttons({
   content,
   href,
+  link,
   className,
   icon,
 }: {
   content: any;
   href: string;
+  link?: string;
   className?: string;
   icon?: string;
 }) {
+  const navigate = useNavigate();
+
+  const handleClick = (link: string | undefined, href: string) => {
+    // Navigate to the desired route
+    if (href === 'false') {
+      navigate(link || '/');
+      return;
+    }
+  };
+
   return (
     <>
       <style>{`
@@ -33,7 +47,10 @@ export default function Buttons({
         }
       `}</style>
 
-      <a href={href} className={`btn btn-custom-cta ${className || ''}`}>
+      <a
+        onClick={() => handleClick(link, href)}
+        className={`btn btn-custom-cta ${className || ''}`}
+      >
         {content}
         {icon && <img src={icon} alt="Icon" className="img-fluid" />}
       </a>

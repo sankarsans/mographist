@@ -5,19 +5,19 @@ export default function Banner() {
     <>
       <style>
         {`
-        /* Scroll runway: gives 300vh for smooth step-by-step expansion */
-        .inner-banner {
-          height: 90vh;
-          width: 100%;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: 8rem 0 2.5rem 0;
-          background-image: url(${HomeBanner});
-          text-align: center;
-        }
-  `}
+          /* Scroll runway: gives 300vh for smooth step-by-step expansion */
+          .inner-banner {
+            height: 90vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 8rem 0 2.5rem 0;
+            background-image: url(${HomeBanner});
+            text-align: center;
+          }
+      `}
       </style>
 
       <section className="inner-banner d-flex align-items-center justify-content-center text-center text-white px-3 py-5">

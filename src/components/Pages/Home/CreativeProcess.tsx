@@ -1,47 +1,47 @@
-import { useState } from "react";
-import pattern from "../../../assets/pattern.png";
+import { useState } from 'react';
+import pattern from '../../../assets/pattern.png';
 
 const processSteps = [
   {
-    id: "01",
-    title: "Discover",
-    shortDesc: "Understand goals.",
+    id: '01',
+    title: 'Discover',
+    shortDesc: 'Understand goals.',
     fullDesc:
-      "Deep dive into brand goals, audience research, and identifying core project objectives.",
+      'Deep dive into brand goals, audience research, and identifying core project objectives.',
   },
   {
-    id: "02",
-    title: "Strategy",
-    shortDesc: "Plan & architect.",
+    id: '02',
+    title: 'Strategy',
+    shortDesc: 'Plan & architect.',
     fullDesc:
-      "We build a precise creative roadmap and production plan with milestones, visual references, and a clear technical brief.",
+      'We build a precise creative roadmap and production plan with milestones, visual references, and a clear technical brief.',
   },
   {
-    id: "03",
-    title: "Create",
-    shortDesc: "Produce and animate",
+    id: '03',
+    title: 'Create',
+    shortDesc: 'Produce and animate',
     fullDesc:
-      "Full-scale creative execution, live production, high-end 3D motion, and iterative visual asset drafting.",
+      'Full-scale creative execution, live production, high-end 3D motion, and iterative visual asset drafting.',
   },
   {
-    id: "04",
-    title: "Refine",
-    shortDesc: "Perfect every detail",
+    id: '04',
+    title: 'Refine',
+    shortDesc: 'Perfect every detail',
     fullDesc:
-      "Polishing typography, micro-interactions, color matching, sound design, and incorporating direct client feedback.",
+      'Polishing typography, micro-interactions, color matching, sound design, and incorporating direct client feedback.',
   },
   {
-    id: "05",
-    title: "Deliver",
-    shortDesc: "Ready for every platform",
+    id: '05',
+    title: 'Deliver',
+    shortDesc: 'Ready for every platform',
     fullDesc:
-      "Master export renders, multi-platform compression packages, and complete handoff documentation.",
+      'Master export renders, multi-platform compression packages, and complete handoff documentation.',
   },
 ];
 
 const CreativeProcess = () => {
   // Default active card matching design (02)
-  const [activeStep, setActiveStep] = useState("02");
+  const [activeStep, setActiveStep] = useState('02');
 
   return (
     <>
@@ -85,10 +85,10 @@ const CreativeProcess = () => {
           padding: 1.75rem 1.5rem;
           cursor: pointer;
           position: relative;
-          transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                      transform 0.35s ease,
-                      background-color 0.35s ease,
-                      box-shadow 0.35s ease;
+          // transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+          //             transform 0.35s ease,
+          //             background-color 0.35s ease,
+          //             box-shadow 0.35s ease;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -185,7 +185,7 @@ const CreativeProcess = () => {
               return (
                 <div
                   key={step.id}
-                  className={`process-card ${isActive ? "active" : ""}`}
+                  className={`process-card ${isActive ? 'active' : ''}`}
                   onMouseEnter={() => setActiveStep(step.id)}
                   onClick={() => setActiveStep(step.id)}
                 >

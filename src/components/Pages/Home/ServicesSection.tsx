@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import arrowNew from '../../../assets/arrow-new.png';
 import VideoPoster from '../../../assets/video-poster.png';
+import { useNavigate } from 'react-router-dom';
 
 const servicesData = [
   {
@@ -144,6 +145,13 @@ const DynamicServicesShowcase = () => {
       setIsPlaying(false);
     }
   }, [activeId]);
+
+  const navigate = useNavigate();
+
+  const handleClick = (serviceId: string) => {
+    // Navigate to the desired route
+    navigate(`/service-details/${serviceId}`);
+  };
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -380,6 +388,7 @@ const DynamicServicesShowcase = () => {
                         key={service.id}
                         type="button"
                         onMouseEnter={() => setActiveId(service.id)}
+                        onClick={() => handleClick(service.id)}
                         className={`service-item ${isActive ? 'active' : ''}`}
                       >
                         <span className="service-id">{service.id}</span>

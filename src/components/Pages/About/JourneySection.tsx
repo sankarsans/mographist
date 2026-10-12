@@ -1,7 +1,9 @@
 import journey1 from '../../../assets/journey1.png';
 import journey2 from '../../../assets/journey2.png';
 import arrow from '../../../assets/arrow.png';
+import greenBg from '../../../assets/green-bg.png';
 import Buttons from '../Common/Buttons';
+import patternLine from '../../../assets/pattern-line.png';
 
 const stats = [
   { value: '30+', label: 'Happy clients' },
@@ -14,11 +16,19 @@ const StoryJourneySection = () => {
     <>
       <style>{`
         .story-journey-section {
-          background-color: #ffffff;
+          background-color: #F9F8FD;
           padding: 6rem 0;
+          background-image: url(${patternLine});
+          background-repeat: no-repeat;
+          background-size: 43%;
+          background-position: 97% 26px;
         }
 
-        
+        .count-section {
+          background: url(${greenBg}) no-repeat;
+          background-size: cover;
+          border-radius: 69px;
+        }
 
         /* Centered Inner Container to match exact proportions */
         .story-content-container {
@@ -48,7 +58,7 @@ const StoryJourneySection = () => {
           align-items: center;
           justify-content: center;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-          border-right: 1px solid rgba(40, 42, 58, 1);
+          border-right: 1px solid rgb(254, 254, 255);
           &:last-child {
             border-right: none;
           }
@@ -58,7 +68,7 @@ const StoryJourneySection = () => {
           font-size: 4rem;
           font-weight: 700;
           letter-spacing: -0.03em;
-          color: rgba(0, 0, 0, 1);
+          color: #fff;
           line-height: 1;
           margin-bottom: 0.75rem;
         }
@@ -144,7 +154,8 @@ const StoryJourneySection = () => {
                     className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
                     content="Start a project"
                     icon={arrow}
-                    href="#projects"
+                    link="/home#ContactSection"
+                    href="false"
                   />
                 </div>
               </div>
@@ -152,7 +163,7 @@ const StoryJourneySection = () => {
           </div>
 
           {/* Bottom Statistics Cards */}
-          <div className="row g-4 pt-lg-5 pt-3 mt-lg-5 justify-content-center">
+          <div className="row g-4 py-lg-5 py-3 mt-lg-5 justify-content-center count-section">
             {stats.map((item, idx) => (
               <div key={idx} className="col-12 col-md-4">
                 <div
@@ -161,11 +172,13 @@ const StoryJourneySection = () => {
                     borderRight:
                       idx === stats.length - 1
                         ? 'none'
-                        : '1px solid rgba(40, 42, 58, 1)',
+                        : '1px solid rgb(215, 217, 230)',
                   }}
                 >
                   <div className="stat-number">{item.value}</div>
-                  <p className="sub-description mb-0">{item.label}</p>
+                  <p className="sub-description text-white mb-0">
+                    {item.label}
+                  </p>
                 </div>
               </div>
             ))}

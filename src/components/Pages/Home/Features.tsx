@@ -54,7 +54,7 @@ const Features = () => {
 
             {/* Right Column: CTA Button */}
             <div className="col-12 col-lg-auto d-flex justify-content-start justify-content-lg-end">
-              <Buttons content="View all projects" href="#projects" />
+              <Buttons content="View all projects" link="/works" href="false" />
             </div>
           </div>
         </div>

@@ -1,275 +1,171 @@
-import React, { useState, useRef } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import arrow from "../../../assets/arrow.png";
+import React from 'react';
 
-const WhyChooseUs = () => {
-  const sliderRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(1);
+const featuresData = [
+  {
+    id: 1,
+    title: 'Creative Excellence',
+    desc: "We bring a filmmaker's eye and a designer's precision to every project. Our work.",
+  },
+  {
+    id: 2,
+    title: 'End to End Production',
+    desc: 'From concept development to final delivery, we manage every stage of the creative process.',
+  },
+  {
+    id: 3,
+    title: 'AI Enhanced Workflows',
+    desc: 'We leverage the latest AI technologies alongside traditional production techniques.',
+  },
+  {
+    id: 4,
+    title: 'Creative Excellence',
+    desc: "We bring a filmmaker's eye and a designer's precision to every project. Our work.",
+  },
+  {
+    id: 5,
+    title: 'End to End Production',
+    desc: 'From concept development to final delivery, we manage every stage of the creative process.',
+  },
+  {
+    id: 6,
+    title: 'AI Enhanced Workflows',
+    desc: 'We leverage the latest AI technologies alongside traditional production techniques.',
+  },
+];
 
-  const steps = [
-    {
-      id: "1",
-      title: "Creative Excellence",
-      description:
-        "We bring a filmmaker's eye and a designer's precision to every project. Our work doesn't just communicate — it captivates, leaving a lasting visual impression that builds brand equity over time.",
-    },
-    {
-      id: "2",
-      title: "End to End Production",
-      description:
-        "From concept development to final delivery, we manage every stage of the creative process.",
-    },
-    {
-      id: "3",
-      title: "AI Enhanced Workflows",
-      description:
-        "We leverage the latest AI technologies alongside traditional production techniques to increase efficiency, creativity, and scalability.",
-    },
-    {
-      id: "4",
-      title: "Cinematic Storytelling",
-      description:
-        "We weave narratives that resonate deeply with your audience, combining compelling scripts with breathtaking visuals.",
-    },
-    {
-      id: "5",
-      title: "Global Delivery",
-      description:
-        "Our distributed team ensures round-the-clock progress, delivering high-quality assets regardless of your timezone.",
-    },
-    {
-      id: "6",
-      title: "Future-Proof Designs",
-      description:
-        "We build assets that scale across platforms and formats, ensuring your investment retains its value for years.",
-    },
-  ];
-
-  // Handle arrow clicks for smooth scrolling
-  const handlePrev = () => {
-    if (sliderRef.current) {
-      const itemWidth = sliderRef.current.children[1].offsetWidth; // index 1 because index 0 is the orange line
-      sliderRef.current.scrollBy({ left: -itemWidth, behavior: "smooth" });
-    }
-  };
-
-  const handleNext = () => {
-    if (sliderRef.current) {
-      const itemWidth = sliderRef.current.children[1].offsetWidth;
-      sliderRef.current.scrollBy({ left: itemWidth, behavior: "smooth" });
-    }
-  };
-
-  // Update the counter when scrolling manually or via buttons
-  const handleScroll = () => {
-    if (sliderRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-      const itemWidth = sliderRef.current.children[1].offsetWidth;
-
-      // 1. Check if we have scrolled all the way to the right end
-      // We use "- 1" to account for any fractional pixel rounding errors in browsers
-      if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 1) {
-        setCurrentIndex(steps.length); // Force it to 6/6
-      } else {
-        // 2. Normal calculation for the rest of the slider
-        const newIndex = Math.round(scrollLeft / itemWidth) + 1;
-        const clampedIndex = Math.min(Math.max(newIndex, 1), steps.length);
-        setCurrentIndex(clampedIndex);
-      }
-    }
-  };
-
-  const padZero = (num) => (num < 10 ? `0${num}` : num);
-
+export default function WhyChooseUs() {
   return (
-    <div className="container choose-section py-5">
-      {/* Hide scrollbar with inline styles for cross-browser compatibility */}
-      <style>
-        {`
-          .hide-scrollbar::-webkit-scrollbar { display: none; }
-          .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-          .slider-item { flex: 0 0 100%; max-width: 100%; }
-          @media (min-width: 768px) {
-            .slider-item { flex: 0 0 50%; max-width: 50%; }
+    <>
+      <style>{`
+        .why-choose-section {
+          position: relative;
+          background-color: #F9F8FD;
+          padding: 7rem 1.5rem 8rem;
+        }
+
+        /* Subtle top grid lines pattern as shown at the top of the reference */
+        // .why-choose-grid-bg {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   right: 0;
+        //   height: 260px;
+        //   background-image: 
+        //     linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+        //     linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+        //   background-size: 56px 56px;
+        //   mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+        //   -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+        //   pointer-events: none;
+        // }
+
+        /* 3-Column Card Grid */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.75rem;
+        }
+
+        /* Feature Card */
+        .feature-card {
+          background: #ffffff;
+          border-radius: 24px;
+          padding: 2.4rem 2rem 3rem 2rem;
+          border: 1px solid #E2E2E2;
+          box-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.01),
+            0 10px 24px rgba(15, 23, 42, 0.04);
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.25s ease,
+                      border-color 0.25s ease;
+          display: flex;
+          flex-direction: column;
+          min-height: 200px;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 
+            0 4px 8px rgba(0, 0, 0, 0.02),
+            0 18px 36px rgba(15, 23, 42, 0.08);
+          border-color: rgba(59, 40, 204, 0.15);
+        }
+
+        .feature-card-title {
+          font-size: 1.15rem;
+          font-weight: 750;
+          color: #0b0914;
+          margin-bottom: 0.85rem;
+          letter-spacing: -0.015em;
+        }
+
+        .feature-card-text {
+          font-size: 0.92rem;
+          color: #555263;
+          line-height: 1.6;
+          margin: 0;
+          font-weight: 400;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 991.98px) {
+          .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
           }
-          @media (min-width: 992px) {
-            .slider-item { flex: 0 0 33.333333%; max-width: 33.333333%; }
+          .why-choose-section {
+            padding: 5rem 1.25rem;
           }
-            ,
-          .nav-arrow-btn{
-            transition: all 0.3s ease;
+          .why-choose-desc {
+            margin-bottom: 2.5rem;
           }
-          .nav-arrow-btn:not(:disabled):hover {
-background-color: rgb(199 189 189 / 10%);background: linear-gradient(90deg,rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.11) 100%);
+        }
+
+        @media (max-width: 640px) {
+          .features-grid {
+            grid-template-columns: 1fr;
           }
-        `}
-      </style>
+          .why-choose-title {
+            font-size: 2.25rem;
+          }
+          .feature-card {
+            padding: 2rem 1.6rem;
+            border-radius: 20px;
+          }
+        }
+      `}</style>
 
-      <div
-        className="p-4 p-md-5 position-relative text-white overflow-hidden inner-section"
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 1)",
-          borderRadius: "80px",
-        }}
-      >
-        {/* Header Section */}
-        <div className="row mb-5 pb-2">
-          <div className="col-lg-8">
-            <p className="section-tag mb-4">WHY CHOOSE US</p>
-            <h2 className="main-heading white mb-3">
-              Where Vision
-              <br />
-              Meets Precision
-            </h2>
-            <p
-              className="section-subtitle mb-0"
-              style={{ color: "rgba(251, 210, 210, 1)" }}
-            >
-              Everything you need to know about working with Mographist. Can't
-              find your answer?
-            </p>
-          </div>
+      <section className="why-choose-section">
+        {/* Subtle decorative grid lines at top */}
+        <div className="why-choose-grid-bg" />
 
-          <div className="col-lg-4 d-flex justify-content-lg-end align-items-lg-center mt-4 mt-lg-0">
-            <div className="d-flex align-items-center gap-3">
-              {/* Dynamic Indicator */}
-              <div className="fw-medium" style={{ fontSize: "1.1rem" }}>
-                <span style={{ color: "#e57000", fontSize: "1.5rem" }}>
-                  {padZero(currentIndex)}
-                </span>
-                <span style={{ color: "#ffffff" }}>
-                  /{padZero(steps.length)}
-                </span>
-              </div>
+        <div className="container">
+          {/* Eyebrow Tag */}
+          <div className="section-tag">Why Choose Us</div>
 
-              {/* Left Arrow Button */}
-              <button
-                onClick={handlePrev}
-                disabled={currentIndex === 1}
-                className="btn rounded-circle p-0 d-flex justify-content-center align-items-center nav-arrow-btn"
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  border: "1px solid rgba(255,255,255)",
-                  transform: "rotate(-180deg)",
-                  backgroundColor:
-                    currentIndex === 1
-                      ? "transparent"
-                      : "rgba(255,255,255,0.1)",
-                  color: currentIndex === 1 ? "rgba(255,255,255,0.3)" : "#fff",
-                  transition: "all 0.3s",
-                }}
-              >
-                <img src={arrow} alt="Arrow icon" />
-              </button>
+          {/* Heading */}
+          <h2 className="main-heading">
+            Where Vision <br />
+            Meets Precision
+          </h2>
 
-              {/* Right Arrow Button */}
-              <button
-                onClick={handleNext}
-                disabled={currentIndex === steps.length}
-                className="btn rounded-circle p-0 d-flex justify-content-center align-items-center nav-arrow-btn"
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  border: "1px solid rgba(255,255,255)",
-                  backgroundColor:
-                    currentIndex === steps.length
-                      ? "transparent"
-                      : "rgba(255,255,255,0.1)",
-                  color:
-                    currentIndex === steps.length
-                      ? "rgba(255,255,255,0.3)"
-                      : "#fff",
-                  transition: "all 0.3s",
-                }}
-              >
-                <img src={arrow} alt="Arrow icon" />
-              </button>
-            </div>
-          </div>
-        </div>
+          {/* Subtitle */}
+          <p className="section-subtitle mb-5">
+            Everything you need to know about working with Mographist. Can't
+            find your answer?
+          </p>
 
-        {/* Timeline Slider Section */}
-        <div className="position-relative mt-0">
-          <div
-            ref={sliderRef}
-            onScroll={handleScroll}
-            className="d-flex flex-nowrap overflow-auto hide-scrollbar position-relative pb-4"
-            style={{ scrollBehavior: "smooth", scrollSnapType: "x mandatory" }}
-          >
-            {/* Continuous Orange Line spanning the inner content */}
-            <div
-              className="position-absolute"
-              style={{
-                top: "28px",
-                left: 0,
-                height: "5px",
-                backgroundColor: "rgba(238, 99, 0, 1)",
-                zIndex: 1,
-                minWidth: "200%",
-              }}
-            ></div>
-
-            {steps.map((step, index) => (
-              <div
-                key={step.id}
-                className="slider-item px-3 position-relative"
-                style={{ scrollSnapAlign: "start", zIndex: 2 }}
-              >
-                {/* Timeline Dot */}
-                <div className="d-flex justify-content-start mb-4">
-                  <div
-                    className="rounded-circle d-flex justify-content-center align-items-center"
-                    style={{
-                      width: "60px",
-                      height: "60px",
-                      backgroundColor: "rgba(255, 255, 255, 0.31))",
-                      backdropFilter: "blur(5px)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    }}
-                  >
-                    <div
-                      className="rounded-circle bg-white"
-                      style={{ width: "24px", height: "24px" }}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Content with Large Background Number */}
-                <div className="position-relative pt-3 text-start">
-                  <span
-                    className="position-absolute fw-bold"
-                    style={{
-                      fontSize: "12rem",
-                      color: "rgba(250, 208, 209, 1)",
-                      opacity: "15%",
-                      top: "-16px",
-                      left: "-53px",
-                      zIndex: -1,
-                      lineHeight: "1",
-                    }}
-                  >
-                    {step.id}
-                  </span>
-                  <h5 className="fw-bold mb-3 text-white">{step.title}</h5>
-                  <p
-                    style={{
-                      color: "rgba(192, 192, 192, 1)",
-                      fontSize: "1rem",
-                      lineHeight: "1.6",
-                      maxWidth: "90%",
-                    }}
-                  >
-                    {step.description}
-                  </p>
-                </div>
+          {/* 3x2 Grid Cards */}
+          <div className="features-grid">
+            {featuresData.map((item) => (
+              <div key={item.id} className="feature-card">
+                <h3 className="feature-card-title">{item.title}</h3>
+                <p className="feature-card-text">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
-};
-
-export default WhyChooseUs;
+}

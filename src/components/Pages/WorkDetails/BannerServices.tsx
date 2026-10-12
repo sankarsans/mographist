@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const BannerServices = () => {
   return (
-    <div className="bg-white py-5 mt-5">
-      <div className="container py-4">
+    <div className="bg-white py-5 mt-5 pb-0">
+      <div className="container py-4 pb-0">
         <div className="row align-items-start gx-5 gy-4">
           {/* Left Column */}
           <div className="col-12 col-md-5">
@@ -23,9 +23,9 @@ const BannerServices = () => {
               <h4
                 className="fw-bold mb-3"
                 style={{
-                  fontSize: "1.125rem",
-                  letterSpacing: "-0.02em",
-                  color: "#000000",
+                  fontSize: '1.125rem',
+                  letterSpacing: '-0.02em',
+                  color: '#000000',
                 }}
               >
                 Commercial Video
@@ -33,10 +33,10 @@ const BannerServices = () => {
               <p
                 className="mb-5"
                 style={{
-                  fontSize: "0.95rem",
-                  lineHeight: "1.6",
-                  color: "rgba(66, 66, 66, 1)",
-                  maxWidth: "520px",
+                  fontSize: '0.95rem',
+                  lineHeight: '1.6',
+                  color: 'rgba(66, 66, 66, 1)',
+                  maxWidth: '520px',
                 }}
               >
                 Microsoft needed a brand film that could communicate the
@@ -49,17 +49,17 @@ const BannerServices = () => {
                 <div
                   className="pe-4"
                   style={{
-                    borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+                    borderRight: '1px solid rgba(0, 0, 0, 0.2)',
                   }}
                 >
                   <div
                     className="fw-bold mb-1"
-                    style={{ fontSize: "0.95rem", color: "#000000" }}
+                    style={{ fontSize: '0.95rem', color: '#000000' }}
                   >
                     Client
                   </div>
                   <div
-                    style={{ fontSize: "0.9rem", color: "rgba(66, 66, 66, 1)" }}
+                    style={{ fontSize: '0.9rem', color: 'rgba(66, 66, 66, 1)' }}
                   >
                     Microsoft
                   </div>
@@ -68,11 +68,11 @@ const BannerServices = () => {
                 <div className="ps-4">
                   <div
                     className="fw-bold mb-1"
-                    style={{ fontSize: "0.95rem", color: "#000000" }}
+                    style={{ fontSize: '0.95rem', color: '#000000' }}
                   >
                     Services
                   </div>
-                  <div style={{ fontSize: "0.9rem", color: "#6c757d" }}>
+                  <div style={{ fontSize: '0.9rem', color: '#6c757d' }}>
                     3D, VFX, Sound Design, AI, Direction, Motion Graphics
                   </div>
                 </div>
