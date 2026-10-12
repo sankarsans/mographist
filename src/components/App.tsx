@@ -1,12 +1,7 @@
 import Header from './Pages/Common/Header';
 import Footer from './Pages/Common/Footer';
 import Home from './Pages/Home/Home';
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import About from './Pages/About/About';
 import Work from './Pages/Work/Work';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
@@ -21,16 +16,14 @@ export default function App() {
   return (
     <div>
       <Header />
-      <Router basename="/mographist">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/works" element={<Work />} />
-          <Route path="/work-details/:id" element={<WorkDetails />} />
-          <Route path="/service-details/:id" element={<ServiceDetails />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/works" element={<Work />} />
+        <Route path="/work-details/:id" element={<WorkDetails />} />
+        <Route path="/service-details/:id" element={<ServiceDetails />} />
+      </Routes>
 
       {!isHomePage && <Footer />}
     </div>
