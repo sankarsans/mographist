@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeBanner from '../../../assets/home-bg.png';
 import VideoBubble from '../../../assets/video-bubble.png';
 import PlayIcon from '../../../assets/play.png';
@@ -121,7 +120,6 @@ export default function HeroBannerShowreel() {
           justify-content: space-between;
           padding: 8rem 0 2.5rem 0;
           background-image: url(${HomeBanner});
-          background-size: calc(100% / 12) 100%;
           text-align: center;
         }
 

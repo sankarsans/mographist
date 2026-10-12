@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import logo from '../../../assets/logo-svg.svg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Buttons from './Buttons';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const location = useLocation();
   const toggleNavbar = () => setIsOpen(!isOpen);
+
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
+  const IsHomePageClass = !isHomePage ? 'header-theme-border' : '';
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -48,7 +51,6 @@ export default function Header() {
           z-index: 1030;
           transition: transform 0.35s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
           background-color: transparent;
-          // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           padding: 1.25rem 0;
           .container{
             background-color: #18152A;
@@ -57,6 +59,9 @@ export default function Header() {
           }
         }
 
+        .header-theme-border {
+          border: 1px solid #888690;
+        }
         /* Slide header out of view on scroll down */
         .custom-navbar.navbar-hidden {
           transform: translateY(-100%);
@@ -64,11 +69,6 @@ export default function Header() {
 
         /* Frosted glass / backdrop once scrolled past top banner */
         .custom-navbar.navbar-scrolled {
-          // background-color: rgba(255, 255, 255, 0.92);
-          // backdrop-filter: blur(8px);
-          // border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          // padding: 0.85rem 0;
-          // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
           border: none;
         }
 
@@ -80,10 +80,38 @@ export default function Header() {
           text-transform: uppercase;
           transition: opacity 0.2s ease;
           padding: 0.5rem 1.25rem !important;
+          opacity: 0.5;
+          &.active{
+          position: relative;
+          opacity: 1;
+           &::after{
+            content: '';
+            background-color: #FF8600;
+            width: 5px;
+            height: 5px;
+            position: absolute;
+            bottom: -0px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+          }
         }
 
         .nav-link-custom:hover {
-          opacity: 0.65;
+          opacity: 1;
+        }
+      }
+
+        .border-active{
+          .nav-link-custom{
+            position: relative;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+            &:hover{
+              opacity: 0.8;
+              transition: opacity 0.2s ease;
+            }
+          }
         }
 
         .btn-custom-cta {
@@ -125,7 +153,7 @@ export default function Header() {
           !isVisible ? 'navbar-hidden' : ''
         } ${isScrolled ? 'navbar-scrolled' : ''}`}
       >
-        <div className="container">
+        <div className={`container ${IsHomePageClass}`}>
           {/* Brand Logo */}
           <NavLink
             to="/home"
@@ -151,7 +179,11 @@ export default function Header() {
             className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}
             id="navbarContent"
           >
-            <ul className="navbar-nav ms-auto align-items-lg-center my-3 my-lg-0 gap-lg-1">
+            <ul
+              className={`navbar-nav ms-auto align-items-lg-center my-3 my-lg-0 gap-lg-1 ${
+                isHomePage ? 'border-active' : ''
+              }`}
+            >
               <li className="nav-item">
                 <NavLink
                   to="/works"
