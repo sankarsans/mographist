@@ -1,8 +1,13 @@
 import HomeBanner from '../../../assets/home-bg.png';
 import arrow from '../../../assets/arrow.png';
 import Buttons from '../Common/Buttons';
+import type { Service } from './serviceData';
 
-export default function Banner() {
+type BannerProps = {
+  service: Service;
+};
+
+export default function Banner({ service }: BannerProps) {
   return (
     <>
       <style>
@@ -28,16 +33,15 @@ export default function Banner() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-11 col-lg-9 col-xl-8">
               <h1 className="banner-title mb-4 white mt-5 pt-5">
-                Live Action <br></br>Video Productions
+                {service.bannerTitle}
               </h1>
               <p className="mx-auto mb-0 banner-subtitle">
-                From concept to final cut, we create cinematic films that move
-                brands, products and ideas to life.
+                {service.description}
               </p>
               <Buttons
                 className="btn btn-outline-light px-4 py-3 mt-4 border-0 shadow-sm"
                 content="Start a Project"
-                icon={arrow}
+                // icon={arrow}
                 href="#contact"
               />
             </div>

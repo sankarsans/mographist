@@ -1,72 +1,17 @@
-import React from 'react';
+import type { Service } from './serviceData';
 
-const services = [
-  {
-    number: '1',
-    title: 'Commercial video production',
-    description:
-      'Campaign-ready films crafted to capture attention and drive results',
-    bgColor: '#D9F2F7',
-    numColor: '#36B4CC',
-    isTall: true,
-  },
-  {
-    number: '2',
-    title: 'Corporate films',
-    description: 'Stories that communicate your company, people and purpose',
-    bgColor: '#FAEDED',
-    numColor: '#EE6060',
-  },
-  {
-    number: '3',
-    title: 'Promotional videos',
-    description:
-      'Engaging films that showcase your brand, product or initiative.',
-    bgColor: '#EEECFF',
-    numColor: '#8378DF',
-  },
-  {
-    number: '4',
-    title: 'Brand storytelling',
-    description:
-      'Human stories designed to build connection, emotion and trust',
-    bgColor: '#F1F1F1',
-    numColor: '#636363',
-  },
-  {
-    number: '5',
-    title: 'Product launches',
-    description: 'Launch films that turn products into memorable moments.',
-    bgColor: '#F8F4E0',
-    numColor: '#C2AC3C',
-  },
-  {
-    number: '6',
-    title: 'Training videos',
-    description:
-      'Clear, engaging content designed to educate, explain and enable',
-    bgColor: '#EEECFF',
-    numColor: '#8378DF',
-  },
-  {
-    number: '7',
-    title: 'Marketing campaigns',
-    description:
-      'High-impact films created for campaigns across channels and platforms',
-    bgColor: '#FAEDED',
-    numColor: '#EE6060',
-  },
-  {
-    number: '8',
-    title: 'Customer testimonials',
-    description:
-      'Authentic customer stories that build credibility and inspire confidence',
-    bgColor: '#EEECFF',
-    numColor: '#8378DF',
-  },
+type WhatWeOfferProps = {
+  service: Service;
+};
+
+const cardColors = [
+  { bgColor: '#D9F2F7', numColor: '#36B4CC' },
+  { bgColor: '#FAEDED', numColor: '#EE6060' },
+  { bgColor: '#EEECFF', numColor: '#8378DF' },
+  { bgColor: '#F1F1F1', numColor: '#636363' },
 ];
 
-export default function WhatWeOffer() {
+export default function WhatWeOffer({ service }: WhatWeOfferProps) {
   return (
     <>
       <style>{`
@@ -173,25 +118,31 @@ export default function WhatWeOffer() {
 
           {/* Heading */}
           <h2 className="main-heading mb-5">
-            Crafted For Every Stage Of{' '}
-            <span className="offer-heading-accent">Your Story</span>
+            Crafted for every stage of
+            <span className="offer-heading-accent"> your story</span>
           </h2>
 
           {/* Bento Card Grid */}
           <div className="bento-grid">
-            {services.map((item) => (
-              <div
-                key={item.number}
-                className={`bento-card ${item.isTall ? 'bento-card-tall' : ''}`}
-                style={{ backgroundColor: item.bgColor }}
-              >
-                <div className="bento-badge" style={{ color: item.numColor }}>
-                  {item.number}
+            {service.tags.map((tag, index) => {
+              const colors = cardColors[index % cardColors.length];
+              return (
+                <div
+                  key={tag.title}
+                  className={`bento-card ${index === 0 ? 'bento-card-tall' : ''}`}
+                  style={{ backgroundColor: colors.bgColor }}
+                >
+                  <div
+                    className="bento-badge"
+                    style={{ color: colors.numColor }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="bento-title">{tag.title}</h3>
+                  <p className="bento-desc">{tag.description}</p>
                 </div>
-                <h3 className="bento-title">{item.title}</h3>
-                <p className="bento-desc">{item.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

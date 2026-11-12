@@ -58,14 +58,13 @@ const Contact = () => {
               color: 'rgba(0, 0, 0, 1)',
             }}
           >
-            Got a great idea, you <br className="d-none d-md-block" /> want to
-            bring to life?
+            Have an idea worth bringing to life? Let's make it happen
           </h2>
 
           <Buttons
             className="btn btn-outline-light px-5 py-3 mt-2 border-0 shadow-sm"
             content="Get in Touch"
-            icon={arrow}
+            // icon={arrow}
             link="/home#ContactSection"
             href="false"
           />
