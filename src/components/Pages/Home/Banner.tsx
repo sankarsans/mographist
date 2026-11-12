@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import HomeBanner from '../../../assets/home-bg.png';
-import VideoBubble from '../../../assets/video-bubble.png';
-import PlayIcon from '../../../assets/play.png';
 
 // Slides/cards cycle during the initial phase
 const SHOWREEL_ITEMS = [
@@ -126,14 +124,14 @@ export default function HeroBannerShowreel() {
         .hero-tag {
           color: rgba(255, 134, 0, 1);
           font-size: 1.25rem;
-          font-weight: 500;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.1rem;
           text-transform: uppercase;
           display: inline-flex;
           align-items: center;
           gap: 0.65rem;
           margin-bottom: 1rem;
-          font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+          // font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
         }
 
         .hero-tag::before {
@@ -146,15 +144,15 @@ export default function HeroBannerShowreel() {
         }
 
         .hero-heading {
-          font-size: clamp(3.5rem, 10vw, 8rem);
+          font-size: clamp(1.5rem, 5vw, 6rem);
           font-weight: 900;
           line-height: 0.95;
           letter-spacing: 0.04em;
-          margin-bottom: 1rem;
+          margin-bottom: 2rem;
         }
 
         .text-ai {
-          color: rgba(208, 188, 247, 1);
+          color: #fff;
         }
 
         .text-powered {
@@ -233,15 +231,16 @@ export default function HeroBannerShowreel() {
           >
             <div className="row">
               <div className="col-12 text-center pt-lg-5 mt-lg-5">
-                <span className="hero-tag pt-lg-5">Creative Motion Studio</span>
+                <span className="hero-tag pt-lg-5">
+                  A CREATIVE MOTION STUDIO THAT MAKES YOU
+                </span>
                 <h1 className="hero-heading">
-                  <span className="text-ai">AI</span>
-                  <span className="text-powered">POWERED</span>
+                  <span className="text-ai">LOOK. FEEL. REMEMBER.</span>
                 </h1>
                 <div className="hero-subtitle">
                   <span>
-                    Motion Graphics, Animation & AI powered
-                    <br /> Video Production
+                    Bringing Stories to Life Through Motion, Video <br></br>
+                    Animation and AI
                   </span>
                 </div>
               </div>
@@ -251,8 +250,8 @@ export default function HeroBannerShowreel() {
           {/* Bottom pipeline labels */}
           <div className="container mt-2" style={{ opacity: textOpacity }}>
             <div className="pipeline-bar">
-              <span>Concept</span> / <span>Production</span> / <span>Post</span>{' '}
-              / <span>Delivery</span>
+              <span>CREATE</span> / <span>ANIMATE</span> / <span>INNOVATE</span>{' '}
+              / <span>INSPIRE</span>
             </div>
           </div>
 

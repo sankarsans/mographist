@@ -1,32 +1,29 @@
-import testi from "../../../assets/tesit-bg.png";
-import testi1 from "../../../assets/test-bg-2.png";
+import testi from '../../../assets/tesit-bg.png';
+import testi1 from '../../../assets/test-bg-2.png';
 const testimonials = [
   {
     id: 1,
-    avatar:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
+    avatar: 'AV',
     quote:
-      "Their ability to simplify technical concepts through motion graphics was outstanding. The entire process was collaborat",
-    name: "Amit Verma",
-    role: "Product Manager, CloudSync",
+      'Every project MG works on becomes a seamless fusion of creativity and clarity. Their motion design not only captures the essence of our brand but also elevates our message, making it visually compelling and purpose-driven.',
+    name: 'Edgar Abarca',
+    role: 'Marketing Manager',
   },
   {
     id: 2,
-    avatar:
-      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80",
+    avatar: 'AP',
     quote:
-      "Their ability to simplify technical concepts through motion graphics was outstanding. The entire process was collaborative, fast, and incredibly professional",
-    name: "Amit Verma",
-    role: "Product Manager, CloudSync",
+      'MG’s strategic approach to motion design brought our brand story to life, strengthening our visual identity while staying true to our values. The final video was engaging, visually compelling, and professionally crafted.',
+    name: 'Ajay Prakash',
+    role: 'Creative Head',
   },
   {
     id: 3,
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80",
+    avatar: 'AB',
     quote:
-      "Their ability to simplify technical concepts through motion graphics was outstanding. The entire process was collaborative",
-    name: "Amit Verma",
-    role: "Product Manager, CloudSync",
+      'Every project MG takes on is a seamless blend of creativity and clarity. Their approach to motion design captures the essence of our brand while elevating our message, making it visually compelling, engaging, and purpose-driven',
+    name: 'Anand.B',
+    role: 'Structural Head',
   },
 ];
 
@@ -49,7 +46,7 @@ const TestimonialsSection = () => {
           }
         }
         .testimonial-card {
-          
+          background: #56322C;
           border-radius: 28px;
           padding: 2.25rem 2rem;
           height: 100%;
@@ -58,6 +55,18 @@ const TestimonialsSection = () => {
           justify-content: space-between;
           border: 1px solid rgba(133, 97, 71, 0.3);
           transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .avatar-img{
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+          color: #fff;
+          background-color: #5C332E;
+          text-align: center;
+          line-height: 48px;
+          font-weight: 600;  
         }
 
         .testimonial-card:hover {
@@ -103,10 +112,12 @@ const TestimonialsSection = () => {
           {/* Header */}
           <div className="row">
             <div className="col-12">
-              <span className="section-tag">How We Work</span>
-              <h2 className="main-heading white">Trusted By Growing Brands</h2>
+              <span className="section-tag">CLIENT STORIES</span>
+              <h2 className="main-heading white">
+                The Best Work Speaks Through Others
+              </h2>
               <p className="sub-description footer">
-                Real partnerships. Real results.
+                Good collaborations leave more than great work behind
               </p>
             </div>
           </div>
@@ -117,12 +128,7 @@ const TestimonialsSection = () => {
               <div key={item.id} className="col-12 col-md-6 col-lg-4">
                 <div className="testimonial-card">
                   <div>
-                    <img
-                      src={item.avatar}
-                      alt={item.name}
-                      className="avatar-img"
-                      loading="lazy"
-                    />
+                    <div className="avatar-img">{item.avatar}</div>
                     <p className="quote-text">{item.quote}</p>
                   </div>
                   <div>

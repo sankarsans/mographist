@@ -1,35 +1,35 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const faqData = [
   {
     id: 1,
-    question: "Do You Provide Scripting Services?",
+    question: 'Do I need a script before starting a video project?',
     answer:
-      "Yes, we provide end-to-end creative scriptwriting, narrative concept development, storyboard drafting, and voiceover script timing tailored specifically to your target audience.",
+      'Yes, we provide end-to-end creative scriptwriting, narrative concept development, storyboard drafting, and voiceover script timing tailored specifically to your target audience.',
   },
   {
     id: 2,
-    question: "Can You Work With Our Existing Footage?",
+    question: 'Can you work with existing footage?',
     answer:
-      "Their ability to simplify technical concepts through motion graphics was outstanding. The entire process was collaborative. Their ability to simplify technical concepts through motion graphics was outstanding. The entire process was collaborative",
+      'Absolutely. We can transform your footage through editing, motion graphics, visual effects and post-production.',
   },
   {
     id: 3,
-    question: "What Formats Do You Deliver?",
+    question: 'What types of videos does Mographist create?',
     answer:
-      "We deliver ready-to-publish assets optimized for web, social media (16:9, 9:16, 1:1, 4:5), broadcast ProRes master files, high-efficiency MP4/WebM files, and vector Lottie animations.",
+      'We deliver ready-to-publish assets optimized for web, social media (16:9, 9:16, 1:1, 4:5), broadcast ProRes master files, high-efficiency MP4/WebM files, and vector Lottie animations.',
   },
   {
     id: 4,
-    question: "How Long Does A Typical Project Take?",
+    question: 'How long does a typical video project take?',
     answer:
-      "A typical animation or live-action project takes between 2 to 4 weeks from concept approval to final master delivery, depending on complexity and revision cycles.",
+      'A typical animation or live-action project takes between 2 to 4 weeks from concept approval to final master delivery, depending on complexity and revision cycles.',
   },
   {
     id: 5,
-    question: "Can You Create Videos For Internal Training?",
+    question: 'Can you create videos for internal training and awareness?',
     answer:
-      "Absolutely. We regularly produce internal onboarding series, cybersecurity training videos, interactive learning modules, and corporate compliance visual guides.",
+      'Absolutely. We regularly produce internal onboarding series, cybersecurity training videos, interactive learning modules, and corporate compliance visual guides.',
   },
 ];
 
@@ -152,14 +152,10 @@ const FAQSection = () => {
           <div className="row gy-5">
             {/* Left Column: Heading & Subtitle */}
             <div className="col-12 col-lg-5 pe-lg-4">
-              <span className="section-tag">Questions</span>
-              <h2 className="main-heading">
-                Frequently
-                <br className="d-none d-lg-block" /> Asked Questions
-              </h2>
+              <span className="section-tag">FAQS</span>
+              <h2 className="main-heading">Curious Minds. Clear Answers</h2>
               <p className="section-subtitle">
-                Everything you need to know about working with Mographist. Can't
-                find your answer?
+                Everything you need to know before we get creating
               </p>
             </div>
 
@@ -171,7 +167,7 @@ const FAQSection = () => {
                   return (
                     <div
                       key={faq.id}
-                      className={`faq-item ${isOpen ? "active" : ""}`}
+                      className={`faq-item ${isOpen ? 'active' : ''}`}
                     >
                       <button
                         type="button"
@@ -188,7 +184,7 @@ const FAQSection = () => {
 
                       <div
                         id={`faq-answer-${faq.id}`}
-                        className={`faq-collapse ${isOpen ? "open" : ""}`}
+                        className={`faq-collapse ${isOpen ? 'open' : ''}`}
                         role="region"
                       >
                         <div className="faq-collapse-inner">

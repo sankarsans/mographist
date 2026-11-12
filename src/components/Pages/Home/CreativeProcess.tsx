@@ -6,36 +6,31 @@ const processSteps = [
     id: '01',
     title: 'Discover',
     shortDesc: 'Understand goals.',
-    fullDesc:
-      'Deep dive into brand goals, audience research, and identifying core project objectives.',
+    fullDesc: 'We understand your business, audience, objectives, and vision',
   },
   {
     id: '02',
     title: 'Strategy',
     shortDesc: 'Plan & architect.',
-    fullDesc:
-      'We build a precise creative roadmap and production plan with milestones, visual references, and a clear technical brief.',
+    fullDesc: 'We develop the right concept, story, and creative direction',
   },
   {
     id: '03',
     title: 'Create',
     shortDesc: 'Produce and animate',
-    fullDesc:
-      'Full-scale creative execution, live production, high-end 3D motion, and iterative visual asset drafting.',
+    fullDesc: 'We bring ideas to life through compelling visual storytelling',
   },
   {
     id: '04',
     title: 'Refine',
     shortDesc: 'Perfect every detail',
-    fullDesc:
-      'Polishing typography, micro-interactions, color matching, sound design, and incorporating direct client feedback.',
+    fullDesc: 'We perfect every detail for quality and creative excellence',
   },
   {
     id: '05',
     title: 'Deliver',
     shortDesc: 'Ready for every platform',
-    fullDesc:
-      'Master export renders, multi-platform compression packages, and complete handoff documentation.',
+    fullDesc: 'We deliver impactful content tailored to every platform',
   },
 ];
 
@@ -169,11 +164,11 @@ const CreativeProcess = () => {
           {/* Section Header */}
           <div className="row">
             <div className="col-12 col-lg-8">
-              <span className="section-tag">How We Work</span>
-              <h2 className="main-heading">Our Creative Process</h2>
+              <span className="section-tag">OUR CREATIVE PROCESS</span>
+              <h2 className="main-heading">The Making Behind the Magic</h2>
               <p className="section-subtitle">
-                simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's
+                From the first spark to the final frame, every step has a
+                purpose
               </p>
             </div>
           </div>
@@ -192,7 +187,7 @@ const CreativeProcess = () => {
                   <div className="step-number">{step.id}</div>
                   <h3 className="step-title">{step.title}</h3>
                   <p className="step-desc">
-                    {isActive ? step.fullDesc : step.shortDesc}
+                    {isActive ? step.fullDesc : step.fullDesc}
                   </p>
                 </div>
               );

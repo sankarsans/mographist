@@ -237,13 +237,10 @@ const ContactSection = () => {
             <div className="col-12 col-lg-6">
               <span className="section-tag">Get In Touch</span>
               <h2 className="main-heading white">
-                Let's Work
-                <br />
-                Together
+                Your Idea. Our Next Big Thing
               </h2>
               <p className="sub-description footer">
-                Have a project in mind? Let's discuss how we can bring your
-                vision to life through the power of motion and storytelling.
+                Every great story starts somewhere. Let's start yours together
               </p>
 
               <div className="contact-links mb-4">
@@ -268,7 +265,7 @@ const ContactSection = () => {
                 </a>
 
                 {/* WhatsApp */}
-                <a
+                {/* <a
                   href="https://wa.me/918147317648"
                   target="_blank"
                   rel="noreferrer"
@@ -290,7 +287,7 @@ const ContactSection = () => {
                     <p className="info-label">Chat on WhatsApp</p>
                     <p className="info-value">+91 8147317648</p>
                   </div>
-                </a>
+                </a> */}
 
                 {/* Email */}
                 <a
@@ -312,7 +309,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="info-label">Email Us</p>
-                    <p className="info-value">info@mographist.com</p>
+                    <p className="info-value">Hi@mographist.com</p>
                   </div>
                 </a>
               </div>
@@ -380,7 +377,9 @@ const ContactSection = () => {
             {/* Right Column: Contact Form */}
             <div className="col-12 col-lg-6">
               <div className="form-card">
-                <h3 className="form-card-title">Send A Message</h3>
+                <h3 className="form-card-title">
+                  Tell Us What You're Imagining
+                </h3>
 
                 {submitted ? (
                   <div
@@ -434,7 +433,7 @@ const ContactSection = () => {
                     {/* Company */}
                     <div className="mb-3">
                       <label className="custom-label" htmlFor="company">
-                        Company
+                        Company Name
                       </label>
                       <input
                         type="text"
@@ -450,7 +449,7 @@ const ContactSection = () => {
                     {/* Service Required */}
                     <div className="mb-3">
                       <label className="custom-label" htmlFor="service">
-                        Service Required
+                        What Are You Looking For? *
                       </label>
                       <select
                         id="service"
@@ -483,7 +482,7 @@ const ContactSection = () => {
                     {/* Share Your Requirements */}
                     <div className="mb-4">
                       <label className="custom-label" htmlFor="requirements">
-                        Share Your Requirements *
+                        Tell Us About Your Project *{' '}
                       </label>
                       <textarea
                         id="requirements"

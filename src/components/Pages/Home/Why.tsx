@@ -6,36 +6,37 @@ import why5 from '../../../assets/why-5.png';
 
 const cards = [
   {
-    title: 'Strategy Meets Creative Crafts',
+    title: 'Ideas Before Everything',
     description:
-      'Every project starts with a clear idea and ends with purposeful execution.',
+      'Every great frame begins with a thought worth bringing to life',
     className: 'strategy-card',
     large: true,
     iconSrc: why1,
   },
   {
-    title: 'One Creative Partner',
-    description: 'From concept & production to motion, VFX',
+    title: 'One Creative Mindset',
+    description: 'From concept to final cut, one shared vision',
     className: 'partner-card',
     iconSrc: why2,
   },
   {
-    title: 'Built for Every Screen',
+    title: 'Every Screen. Every Story.',
     description:
-      'Content designed to perform across campaigns, products & platforms.',
+      'Built to look sharp and communicate clearly, wherever it plays.',
     className: 'screen-card',
     iconSrc: why3,
   },
   {
-    title: 'AI-Enhanced, Human-Led',
+    title: 'Human Led. AI Enhanced',
     description:
-      'Smarter workflows powered by AI, shaped by creative judgement.',
+      'Technology expands the possibilities. Creative judgement shapes the result.',
     className: 'ai-card',
     iconSrc: why4,
   },
   {
-    title: 'Stories Drive Impact',
-    description: 'We create content that informs, engages',
+    title: 'Made to Mean More',
+    description:
+      'Stories designed to make complex ideas clearer and brands more memorable',
     className: 'stories-card',
     iconSrc: why5,
   },

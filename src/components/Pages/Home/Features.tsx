@@ -41,20 +41,18 @@ const Features = () => {
           <div className="row align-items-center justify-content-between gy-4">
             {/* Left Column: Tag, Heading, Subtitle */}
             <div className="col-12 col-lg-8">
-              <span className="section-tag">Selected Work</span>
+              <span className="section-tag">Our Portfolio</span>
               <h2 className="main-heading">
-                Motion That Connects
-                <br />
-                Stories That Stay.
+                Where creativity <br></br>Takes the Spotlight.
               </h2>
               <p className="section-subtitle mb-0">
-                simply dummy text of the printing and typesetting industry.
+                From imagination to motion. Explore what we've made.
               </p>
             </div>
 
             {/* Right Column: CTA Button */}
             <div className="col-12 col-lg-auto d-flex justify-content-start justify-content-lg-end">
-              <Buttons content="View all projects" link="/works" href="false" />
+              <Buttons content="See Our Creations" link="/works" href="false" />
             </div>
           </div>
         </div>
