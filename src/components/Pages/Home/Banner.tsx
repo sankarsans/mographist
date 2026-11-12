@@ -179,7 +179,7 @@ export default function HeroBannerShowreel() {
         }
 
         .pipeline-bar span {
-          padding: 0 1.2rem;
+          padding: 0 0.2rem;
         }
 
         /* --- Morphing Interactive Card --- */

@@ -186,7 +186,7 @@ const DynamicServicesShowcase = () => {
         .service-item {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          // gap: 1rem;
           padding: 0.6rem 0;
           background: none;
           border: none;
@@ -208,6 +208,10 @@ const DynamicServicesShowcase = () => {
           color: #ffffff;
           font-weight: 700;
           font-size: 1.15rem;
+          img {
+          padding-left: 0.5rem;
+          }
+        
           .service-id {
            color: #ffffff;
           }
@@ -216,7 +220,7 @@ const DynamicServicesShowcase = () => {
         .service-id {
           font-weight: 700;
           font-size: 1rem;
-          min-width: 26px;
+          min-width: 30px;
           color: rgba(165, 165, 165, 1);
         }
 

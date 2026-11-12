@@ -7,7 +7,7 @@ export default function Banner() {
         {`
           /* Scroll runway: gives 300vh for smooth step-by-step expansion */
           .inner-banner {
-            height: 90vh;
+            height: 100vh;
             width: 100%;
             overflow: hidden;
             display: flex;
@@ -25,7 +25,7 @@ export default function Banner() {
         <div className="container position-relative" style={{ zIndex: 1 }}>
           <div className="row justify-content-center">
             <div className="col-12 col-md-11 col-lg-9 col-xl-8">
-              <h1 className="banner-title mb-4 white">
+              <h1 className="banner-title mb-4 white mt-5 pt-5">
                 Stories brought to life with ambitious brands and bold teams
               </h1>
               <p className="mx-auto mb-0 banner-subtitle">

@@ -1,54 +1,50 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import why1 from '../../../assets/why-1.png';
+import why2 from '../../../assets/why-2.png';
+import why3 from '../../../assets/why-3.png';
+import why4 from '../../../assets/why-4.png';
+import why5 from '../../../assets/why-5.png';
 
 const cards = [
   {
-    title: "Strategy Meets Creative Crafts",
+    title: 'Strategy Meets Creative Crafts',
     description:
-      "Every project starts with a clear idea and ends with purposeful execution.",
-    className: "strategy-card",
-    iconColor: "#19b7d3",
+      'Every project starts with a clear idea and ends with purposeful execution.',
+    className: 'strategy-card',
     large: true,
+    iconSrc: why1,
   },
   {
-    title: "One Creative Partner",
-    description: "From concept & production to motion, VFX",
-    className: "partner-card",
-    iconColor: "#ff5d5d",
+    title: 'One Creative Partner',
+    description: 'From concept & production to motion, VFX',
+    className: 'partner-card',
+    iconSrc: why2,
   },
   {
-    title: "Built for Every Screen",
+    title: 'Built for Every Screen',
     description:
-      "Content designed to perform across campaigns, products & platforms.",
-    className: "screen-card",
-    iconColor: "#6755e8",
+      'Content designed to perform across campaigns, products & platforms.',
+    className: 'screen-card',
+    iconSrc: why3,
   },
   {
-    title: "AI-Enhanced, Human-Led",
+    title: 'AI-Enhanced, Human-Led',
     description:
-      "Smarter workflows powered by AI, shaped by creative judgement.",
-    className: "ai-card",
-    iconColor: "#777777",
+      'Smarter workflows powered by AI, shaped by creative judgement.',
+    className: 'ai-card',
+    iconSrc: why4,
   },
   {
-    title: "Stories Drive Impact",
-    description: "We create content that informs, engages",
-    className: "stories-card",
-    iconColor: "#d6ae00",
+    title: 'Stories Drive Impact',
+    description: 'We create content that informs, engages',
+    className: 'stories-card',
+    iconSrc: why5,
   },
 ];
 
-function CardIcon({ color }) {
+function CardIcon({ card }) {
   return (
-    <div
-      className="card-icon"
-      style={{
-        "--icon-color": color,
-      }}
-    >
-      <span className="icon-inner">
-        <span className="icon-line"></span>
-      </span>
+    <div className="card-icon">
+      <img src={card.iconSrc} alt="icon" />
     </div>
   );
 }
@@ -57,10 +53,10 @@ function ImpactCard({ card }) {
   return (
     <div
       className={`impact-card ${card.className} ${
-        card.large ? "impact-card-large" : ""
+        card.large ? 'impact-card-large' : ''
       }`}
     >
-      <CardIcon color={card.iconColor} />
+      <CardIcon card={card} />
 
       <div className="card-content">
         <h3>{card.title}</h3>
@@ -223,6 +219,9 @@ export default function Why() {
           justify-content: center;
           margin-bottom: 17px;
           box-shadow:rgba(25, 166, 194, 0.08) 0px 10px 20px -10px;
+          img {
+            width: 65%;
+          }
         }
 
         .icon-inner {
@@ -401,7 +400,7 @@ export default function Why() {
             <div className="section-tag">WHY MOGRAPHIST</div>
 
             <h2 className="main-heading mb-0">
-              More Than Motion We Create{" "}
+              More Than Motion We Create{' '}
               <span className="highlight">Impact</span>
             </h2>
 
