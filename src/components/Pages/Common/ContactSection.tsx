@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../../../assets/mographist-logo.png';
 import line from '../../../assets/line.png';
+import { services } from '../ServiceDetails/serviceData';
+import { useNavigate } from 'react-router-dom';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -59,14 +61,81 @@ const ContactSection = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleClick = (serviceId: string) => {
+    // Navigate to the desired route
+    navigate(`/service-details/${serviceId}`);
+  };
+
   return (
     <>
       <style>{`
         /* Contact Details */
+        .services-motion {
+          overflow: hidden;
+          width: 100%;
+          white-space: nowrap;
+          background: #101010;
+          padding: 1.7rem 0;
+          margin-top: 3rem;
+          position: relative;
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            top: 2%;
+            width: 100%; 
+            height: 98%;
+            z-index: 2;
+            background: #101010;
+          }
+        }
+
+        .services-track {
+          display: flex;
+          width: max-content;
+          position: relative;
+          z-index: 99;
+          // gap: 2.5rem; /* Space between each service item */
+          animation: scrollLeft 25s linear infinite; /* Adjust 25s to control speed */
+        }
+
+        /* Optional: Pause scrolling when the user hovers over it */
+        .services-motion:hover .services-track {
+          animation-play-state: paused;
+        }
+
+        .service-item {
+          flex-shrink: 0;
+          color: #767676;
+          font-size: 1rem;
+          font-weight: 500;
+          border-right: 1px solid #484848;
+          padding: 0 2rem;
+          a{
+            color: #767676;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+          }
+          a:hover{
+            color: #ffffff;
+          }
+        }
+
+        @keyframes scrollLeft {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
         .contact-section {
             border-radius: 80px;
             margin: 0rem 2rem;
-            padding-bottom: 1.5rem;
+            padding-bottom: 0rem;
             margin-bottom: 2rem;
         }
         .contact-info-item {
@@ -219,25 +288,25 @@ const ContactSection = () => {
         .sub-footer-link:hover {
           color: #a1a1aa;
         }
-          .footer-logo{
+        .footer-logo{
           margin-bottom: 1.5rem;
           padding-bottom: 1.5rem;
-          background: url(${line});
+          background: url(${line}) #050505;
           background-size: auto;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+          background-position: bottom center;
+          background-repeat: no-repeat;
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          }
+        }
       `}</style>
 
-      <section className="contact-section bg-black-section">
+      <section className="contact-section bg-black-section px-0">
         <div className="container">
-          <div className="row gy-5 align-items-centers">
+          <div className="row gy-5 align-items-centers px-3">
             {/* Left Column: Heading & Contact Channels */}
             <div className="col-12 col-lg-6">
               <span className="section-tag">Get In Touch</span>
               <h2 className="main-heading white">
-                Your Idea. Our Next Big Thing
+                Your Idea. Our<br></br> Next Big Thing
               </h2>
               <p className="sub-description footer">
                 Every great story starts somewhere. Let's start yours together
@@ -315,20 +384,12 @@ const ContactSection = () => {
               </div>
 
               {/* Social Follow */}
-              <div className="d-flex align-items-center gap-2 mt-4 pt-2">
+              <div className="mt-xs-0" style={{ marginTop: '9.5rem' }}>
                 <span
                   style={{
-                    fontSize: '0.8rem',
-                    color: '#71717a',
-                    marginRight: '0.5rem',
+                    opacity: '60%',
+                    fontSize: '0.875rem',
                   }}
-                >
-                  Follow us:
-                </span>
-                <a
-                  href="#instagram"
-                  className="social-circle"
-                  aria-label="Instagram"
                 >
                   <svg
                     width="14"
@@ -336,41 +397,89 @@ const ContactSection = () => {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     viewBox="0 0 24 24"
                   >
-                    <rect width="20" height="20" x="2" y="2" rx="5" />
-                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
                   </svg>
-                </a>
-                <a
-                  href="#twitter"
-                  className="social-circle"
-                  aria-label="Twitter"
+                  <span style={{ paddingLeft: '0.5rem' }}>
+                    Bangalore, Karnataka, India- 560061
+                  </span>
+                </span>
+                <div className="d-flex align-items-center gap-3 mt-1 pt-2">
+                  {/* <span
+                  style={{
+                    fontSize: '0.8rem',
+                    color: '#71717a',
+                    marginRight: '0.5rem',
+                  }}
                 >
-                  <svg
-                    width="14"
-                    height="14"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+                  Follow us:
+                </span> */}
+
+                  <a
+                    href="#instagram"
+                    className="social-circle"
+                    aria-label="Instagram"
                   >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a
-                  href="#linkedin"
-                  className="social-circle"
-                  aria-label="LinkedIn"
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect width="20" height="20" x="2" y="2" rx="5" />
+                      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#twitter"
+                    className="social-circle"
+                    aria-label="Twitter"
                   >
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </a>
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#linkedin"
+                    className="social-circle"
+                    aria-label="LinkedIn"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#youtube"
+                    className="social-circle"
+                    aria-label="YouTube"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -509,20 +618,64 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
-          <div className="footer-logo pt-5 mt-5">
+        </div>
+        <div
+          className="services-motion"
+          style={{
+            background:
+              'linear-gradient(90deg, #101010 0%, #3A24B5 49%, #101010 79%)',
+          }}
+        >
+          <div className="services-track">
+            {/* First set of items */}
+            {services.map((service) => (
+              <div key={service.id} className="service-item">
+                <a
+                  onClick={() => handleClick(service.id)}
+                  className="service-title cusror-pointer"
+                >
+                  {service.title}
+                </a>
+              </div>
+            ))}
+
+            {/* Duplicate set for seamless infinite looping */}
+            {services.map((service) => (
+              <div key={`${service.id}-duplicate`} className="service-item">
+                <a
+                  onClick={() => handleClick(service.id)}
+                  className="service-title cusror-pointer"
+                >
+                  {service.title}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          className=""
+          style={{
+            backgroundColor: '#050505',
+            borderRadius: '80px',
+            paddingBottom: '1.5rem',
+          }}
+        >
+          <div className="footer-logo pt-5 px-4">
             <img src={logo} className="img-fluid" alt="Logo" />
           </div>
-          <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
-            <p className="copyright-text mb-0">
-              &copy; 2026 Mographist OPC Pvt. Ltd. All rights reserved.
-            </p>
-            <div className="d-flex align-items-center gap-4">
-              <a href="#privacy" className="sub-footer-link">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="sub-footer-link">
-                Terms of Service
-              </a>
+          <div className="container">
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 px-lg-5">
+              <p className="copyright-text mb-0">
+                &copy; 2026 Mographist OPC Pvt. Ltd. All rights reserved.
+              </p>
+              <div className="d-flex align-items-center gap-4">
+                <a href="#privacy" className="sub-footer-link">
+                  Privacy Policy
+                </a>
+                <a href="#terms" className="sub-footer-link">
+                  Terms of Service
+                </a>
+              </div>
             </div>
           </div>
         </div>
