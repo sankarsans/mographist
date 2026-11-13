@@ -2,25 +2,28 @@ import innerBg from '../../../assets/inner-bg.png';
 
 const processStages = [
   {
-    title: 'Creative\nDirection',
-    description: 'Defining the idea, narrative and visual approach',
-  },
-  {
-    title: 'Concept &\nStory',
-    description: 'Turning ideas into compelling stories and scripts',
-  },
-  {
-    title: 'Pre-\nproduction',
-    description: 'Planning, casting, locations, sets and shot design',
-  },
-  {
-    title: 'Product\nion',
-    description: 'Bringing the vision to life on set with precision',
-  },
-  {
-    title: 'Post-production &\nDelivery',
+    title: 'Discover',
     description:
-      'Editing, color, sound and VFX, then optimised for every screen and platform.',
+      'We understand your vision, audience and what you want to achieve',
+  },
+  {
+    title: 'Conceptualise',
+    description: 'We shape the idea, creative direction and visual approach',
+  },
+  {
+    title: 'Plan',
+    description:
+      'We map out the resources, timelines and production requirements',
+  },
+  {
+    title: 'Create & Refine',
+    description:
+      'We bring ideas to life, fine-tuning every detail along the way',
+  },
+  {
+    title: 'Deliver',
+    description:
+      'We prepare the final output, ready for your audience and platforms',
   },
 ];
 
@@ -219,7 +222,7 @@ export default function ServiceProcess() {
 
             {/* Heading */}
             <h2 className="main-heading white">
-              Our Process Makes It<br></br> Easier To Press Play
+              Behind Every Great Frame,<br></br> There's a Plan.
             </h2>
 
             {/* Subtitle */}

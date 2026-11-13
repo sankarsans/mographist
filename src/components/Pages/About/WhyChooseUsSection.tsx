@@ -4,32 +4,32 @@ const featuresData = [
   {
     id: 1,
     title: 'Creative Excellence',
-    desc: "We bring a filmmaker's eye and a designer's precision to every project. Our work.",
+    desc: 'Every project is shaped by strong ideas, thoughtful design and attention to detail',
   },
   {
     id: 2,
     title: 'End to End Production',
-    desc: 'From concept development to final delivery, we manage every stage of the creative process.',
+    desc: 'From the first concept to final delivery, we bring every stage together seamlessly',
   },
   {
     id: 3,
-    title: 'AI Enhanced Workflows',
-    desc: 'We leverage the latest AI technologies alongside traditional production techniques.',
+    title: 'Human Led, AI Enhanced',
+    desc: 'We combine creative expertise with emerging technology to explore new possibilities',
   },
   {
     id: 4,
-    title: 'Creative Excellence',
-    desc: "We bring a filmmaker's eye and a designer's precision to every project. Our work.",
+    title: 'Stories With Purpose',
+    desc: 'We create visuals that communicate clearly, connect emotionally and leave an impression',
   },
   {
     id: 5,
-    title: 'End to End Production',
-    desc: 'From concept development to final delivery, we manage every stage of the creative process.',
+    title: 'Craft Across Every Medium',
+    desc: 'From live action to animation and VFX, we bring diverse creative disciplines together',
   },
   {
     id: 6,
-    title: 'AI Enhanced Workflows',
-    desc: 'We leverage the latest AI technologies alongside traditional production techniques.',
+    title: 'Built Around Your Vision',
+    desc: 'We collaborate closely to turn your goals into meaningful visual experiences',
   },
 ];
 
@@ -151,8 +151,8 @@ export default function WhyChooseUs() {
 
           {/* Subtitle */}
           <p className="section-subtitle mb-5">
-            Everything you need to know about working with Mographist. Can't
-            find your answer?
+            Creative thinking, technical expertise and thoughtful execution in
+            every frame
           </p>
 
           {/* 3x2 Grid Cards */}

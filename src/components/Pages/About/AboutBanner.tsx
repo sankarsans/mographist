@@ -28,16 +28,16 @@ export default function AboutBanner() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-11 col-lg-9 col-xl-8">
               <h1 className="banner-title mb-4 white mt-5 pt-5">
-                Live Action<br></br> Video Productions
+                We Bring Ideas to Life<br></br> Through Motion
               </h1>
               <p className="mx-auto mb-0 banner-subtitle">
-                From concept to final cut, we create cinematic films that move
-                brands, products and ideas to life.
+                A creative production studio turning bold ideas into compelling
+                films, animation and visual experiences
               </p>
               <Buttons
                 className="btn btn-outline-light px-4 mt-4 border-0 shadow-sm"
                 content="Start a Project"
-                icon={arrow}
+                // icon={arrow}
                 link="/home#ContactSection"
                 href="false"
               />

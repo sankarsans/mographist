@@ -10,6 +10,11 @@ const DynamicServicesShowcase = () => {
   const [activeId, setActiveId] = useState('01');
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  // Inside your component:
+  const [showAll, setShowAll] = useState(false);
+
+  // Show all items if showAll is true, otherwise slice the first 10
+  const visibleServices = showAll ? services : services.slice(0, 10);
 
   const currentService = services.find((s) => s.id === activeId) || services[0];
 
@@ -262,7 +267,7 @@ const DynamicServicesShowcase = () => {
               {/* Left Column: Interactive Nav List */}
               <div className="col-12 col-lg-5">
                 <div className="d-flex flex-column">
-                  {services.map((service) => {
+                  {visibleServices.map((service) => {
                     const isActive = activeId === service.id;
                     return (
                       <button
@@ -278,6 +283,20 @@ const DynamicServicesShowcase = () => {
                       </button>
                     );
                   })}
+
+                  {/* Only render the button if there are more than 10 items */}
+                  {services.length > 10 && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAll(!showAll)}
+                      className="d-inline-block btn text-white mt-3 text-start 
+                      w-auto text-decoration-underline outline-none"
+                    >
+                      {showAll
+                        ? 'View Less'
+                        : `View More (${services.length - 10})`}
+                    </button>
+                  )}
                 </div>
               </div>
 

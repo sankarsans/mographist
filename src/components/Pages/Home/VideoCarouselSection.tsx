@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const carouselSlides = [
   {
     id: '01',
-    badge: 'Brand film',
-    title: 'Precision Craftsmanship And Typesetting',
+    badge: 'Product Videos',
+    title: 'A cinematic showcase of product design and details.',
     videoSrc:
       'https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4',
     poster:
@@ -13,9 +13,9 @@ const carouselSlides = [
   },
   {
     id: '02',
-    badge: 'Brand film',
+    badge: 'Showreel',
     title:
-      'Simply Dummy Text Of The Printing And Type Industry. Lorem Ipsum Has Been.',
+      'A creative showcase of visual storytelling, filmmaking, and animation',
     videoSrc:
       'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-charts-and-data-31913-large.mp4',
     poster:
@@ -24,7 +24,7 @@ const carouselSlides = [
   {
     id: '03',
     badge: 'Brand film',
-    title: 'Simply Dummy Text Of The Printing And Industry. Lorem Ipsum.',
+    title: 'Exploring cinematic storytelling and brand visuals',
     videoSrc:
       'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-modern-smartphone-with-a-green-screen-42993-large.mp4',
     poster:
@@ -32,8 +32,8 @@ const carouselSlides = [
   },
   {
     id: '04',
-    badge: 'Commercial',
-    title: 'Next-Generation Dynamic Product Visuals & Motion.',
+    badge: 'Motion Graphics',
+    title: 'Exploring motion graphics, typography, and animation',
     videoSrc:
       'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-39962-large.mp4',
     poster:

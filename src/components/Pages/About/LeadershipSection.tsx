@@ -1,7 +1,6 @@
 import arrow from '../../../assets/arrow.png';
-import leader from '../../../assets/leader.png';
+import leader from '../../../assets/about-image.png';
 import badge from '../../../assets/badge.png';
-import Buttons from '../Common/Buttons';
 
 const LeadershipSection = () => {
   return (
@@ -198,33 +197,32 @@ const LeadershipSection = () => {
           <div className="row">
             <div className="col-12 pb-lg-5 pb-4">
               <span className="section-tag">The Team</span>
-              <h2 className="main-heading">Leadership</h2>
+              <h2 className="main-heading">
+                The Creative Mind Behind Mographist
+              </h2>
             </div>
           </div>
 
           <div className="row align-items-center gy-5">
             {/* Left Column: Visual Artwork & Floating Tags */}
             <div className="col-12 col-lg-6">
-              <div className="portrait-stage">
-                <div className="shape-quarter"></div>
-                <div className="stage-blob-bg">
+              <img src={leader} alt="Chetan R Vanahalli" className="w-100" />
+
+              {/* <div className="portrait-stage"> */}
+              {/* <div className="shape-quarter"></div> */}
+              {/* <div className="stage-blob-bg">
                   <img
                     src={badge}
                     alt="Badge"
                     style={{ width: '100%', height: '100%' }}
                   />
-                </div>
-                <div className="shape-orange-dot"></div>
+                </div> */}
+              {/* <div className="shape-orange-dot"></div> */}
 
-                {/* Main Profile Cutout */}
-                <img
-                  src={leader}
-                  alt="Chetan R Vanahalli"
-                  className="portrait-img rounded-circle"
-                />
+              {/* Main Profile Cutout */}
 
-                {/* Left Floating Badge */}
-                <div className="floating-badge badge-left">
+              {/* Left Floating Badge */}
+              {/* <div className="floating-badge badge-left">
                   <img
                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"
                     alt="Michael V"
@@ -234,10 +232,10 @@ const LeadershipSection = () => {
                     <span className="badge-chip">+ $28,900</span>
                     <p className="badge-subtitle">Received from Michael V</p>
                   </div>
-                </div>
+                </div> */}
 
-                {/* Right Floating Badge */}
-                <div className="floating-badge badge-right">
+              {/* Right Floating Badge */}
+              {/* <div className="floating-badge badge-right">
                   <img
                     src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80"
                     alt="Michael V"
@@ -247,29 +245,31 @@ const LeadershipSection = () => {
                     <span className="badge-chip">+ $28,900</span>
                     <p className="badge-subtitle">Received from Michael V</p>
                   </div>
-                </div>
-              </div>
+                </div> */}
+              {/* </div> */}
             </div>
 
             {/* Right Column: Profile Narrative & Info */}
             <div className="col-12 col-lg-6 ps-lg-5">
               <p className="member-role">Founder & Creative Director</p>
-              <h3 className="member-name">Chetan R Vanahalli</h3>
+              <h3 className="member-name">MG Chetan</h3>
 
               <p className="sub-description mb-3">
-                With over 10 years of experience in video production, motion
-                graphics, animation, and post-production, Chetan leads the media
-                and production division at Mographist OPC Pvt. Ltd., creating
-                engaging visual experiences through creative storytelling and
-                technical expertise.
+                With over a decade of experience in video production, motion
+                graphics, animation and post-production, Chetan brings together
+                creative vision and technical expertise.
+                <br></br>
+                As Founder and Creative Director of Mographist, he leads the
+                studio's creative direction, transforming ideas into compelling
+                visual stories across film, design and emerging technologies
               </p>
 
-              <Buttons
+              {/* <Buttons
                 className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
                 content="Meet the Creator"
                 icon={arrow}
                 href="#creator"
-              />
+              /> */}
             </div>
           </div>
         </div>

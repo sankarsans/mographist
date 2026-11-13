@@ -114,7 +114,7 @@ export const services: Service[] = [
   },
   {
     id: '03',
-    title: 'Event Coverage & Content Creation',
+    title: 'Event Films & Coverage',
     bannerTitle: 'Event Films & Coverage',
     description:
       'From corporate events to live experiences, we capture the energy, emotion and moments worth reliving',
@@ -156,7 +156,7 @@ export const services: Service[] = [
   },
   {
     id: '04',
-    title: 'Animation & Motion Graphics',
+    title: 'Motion Graphics & Animation',
     bannerTitle: 'Motion Graphics & Animation',
     description:
       'Bringing ideas to life through expressive animation, motion design and captivating visuals',
@@ -191,7 +191,7 @@ export const services: Service[] = [
   },
   {
     id: '05',
-    title: 'AI Powered Content Creation',
+    title: 'AI-Powered Video Production',
     bannerTitle: 'AI Powered Video Production',
     description:
       'Combining human creativity and AI to create extraordinary videos and visual experiences',
@@ -229,7 +229,7 @@ export const services: Service[] = [
   },
   {
     id: '06',
-    title: 'Virtual Production And Interactive Design',
+    title: 'Healthcare & Medical Videos',
     bannerTitle: 'Virtual Production & Interactive Design',
     description:
       'Blending physical and digital worlds to create immersive, interactive visual experiences',
@@ -267,7 +267,7 @@ export const services: Service[] = [
   },
   {
     id: '07',
-    title: 'Post Production Services',
+    title: 'Post Production & VFX',
     bannerTitle: 'Post Production Services',
     description:
       'Transforming raw footage into compelling stories through creative editing and cinematic finishing',
@@ -300,7 +300,7 @@ export const services: Service[] = [
   },
   {
     id: '08',
-    title: 'SaaS & Technology Content',
+    title: 'SaaS & Technology Videos',
     bannerTitle: 'SaaS & Technology Videos',
     description:
       'Making complex technology simple through engaging explainers, product demos and visual storytelling',
@@ -335,7 +335,7 @@ export const services: Service[] = [
   },
   {
     id: '09',
-    title: 'Cyber Security Awareness Content',
+    title: 'Cybersecurity Awareness Videos',
     bannerTitle: 'Cybersecurity Awareness Videos',
     description:
       'Making cyber threats easier to understand through engaging stories that inspire safer actions',
@@ -371,7 +371,7 @@ export const services: Service[] = [
   },
   {
     id: '10',
-    title: 'Social Media & Content Creation',
+    title: 'Social Media Video Production',
     bannerTitle: 'Social Media Video Production',
     description:
       'We create scroll-stopping videos that grab attention, spark engagement and make every second count.',
@@ -408,6 +408,82 @@ export const services: Service[] = [
       {
         title: 'Motion Graphics for Social Media',
         description: 'Make messages stand out with bold, animated visuals',
+      },
+    ],
+  },
+  {
+    id: '11',
+    title: 'Real Estate & Architectural Videos',
+    bannerTitle: 'Real Estate & Architectural Videos',
+    description:
+      'We bring properties and architectural visions to life through cinematic films, 3D visualisation and immersive storytelling',
+    videoSrc:
+      'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-scrolling-social-media-42994-large.mp4',
+    poster:
+      'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
+    tags: [
+      {
+        title: 'Property Showcase Videos',
+        description:
+          'Cinematic films that highlight spaces, features and lifestyle.',
+      },
+      {
+        title: 'Architectural 3D Walkthroughs',
+        description:
+          'Bring unbuilt spaces to life through realistic 3D walkthroughs',
+      },
+      {
+        title: 'Real Estate Promotional Films',
+        description:
+          'Compelling property campaigns designed to attract buyers and investors.',
+      },
+      {
+        title: 'Interior & Exterior Visualisation',
+        description:
+          'Showcase architectural details, materials and spaces in realistic 3D',
+      },
+      {
+        title: 'Virtual Property Tours',
+        description:
+          'Create immersive tours that let buyers explore spaces remotely.',
+      },
+    ],
+  },
+  {
+    id: '12',
+    title: 'Educational & Institutional Videos',
+    bannerTitle: 'Educational & Institutional Videos',
+    description:
+      'We transform knowledge into engaging visual stories through educational films, animation and impactful institutional videos.',
+    videoSrc:
+      'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-scrolling-social-media-42994-large.mp4',
+    poster:
+      'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
+    tags: [
+      {
+        title: 'Educational Explainer Videos',
+        description:
+          'Simplify complex topics through clear visuals and engaging storytelling',
+      },
+      {
+        title: 'Institutional Films',
+        description:
+          'Showcase your institutions vision, achievements and values',
+      },
+      {
+        title: 'E-Learning & Course Videos',
+        description:
+          'Turn lessons into engaging, easy-to-follow learning experiences.',
+      },
+      {
+        title: 'Training & Development Videos',
+        description:
+          'Make employee and student training more effective and accessible',
+      },
+      {
+        title: 'Campus & Infrastructure Films',
+        description:
+          'Highlight facilities, campus life and learning environments.',
       },
     ],
   },

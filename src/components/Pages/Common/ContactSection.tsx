@@ -86,7 +86,7 @@ const ContactSection = () => {
             position: absolute;
             top: 2%;
             width: 100%; 
-            height: 98%;
+            height: 96%;
             z-index: 2;
             background: #101010;
           }
@@ -98,7 +98,7 @@ const ContactSection = () => {
           position: relative;
           z-index: 99;
           // gap: 2.5rem; /* Space between each service item */
-          animation: scrollLeft 25s linear infinite; /* Adjust 25s to control speed */
+          animation: scrollLeft 45s linear infinite; /* Adjust 25s to control speed */
         }
 
         /* Optional: Pause scrolling when the user hovers over it */

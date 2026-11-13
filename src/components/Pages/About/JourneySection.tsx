@@ -138,14 +138,17 @@ const StoryJourneySection = () => {
 
                 {/* Paragraph Content */}
                 <p className="section-subtitle">
-                  Simply dummy text of the printing and typesetting industry.
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since 1966.
+                  Mographist began with a simple belief: every great idea
+                  deserves to be seen, felt and remembered. What started with a
+                  passion for motion design has evolved into a creative studio
+                  bringing stories to life through film, animation and
+                  technology.
                 </p>
 
                 <p className="section-subtitle mb-4">
-                  simply dummy text of the printing and typesetting industry.
-                  Lorem Ipsum.
+                  Today, we combine creative thinking, visual craftsmanship and
+                  emerging technologies to create meaningful experiences for
+                  brands and businesses
                 </p>
 
                 {/* Button */}
@@ -153,7 +156,7 @@ const StoryJourneySection = () => {
                   <Buttons
                     className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
                     content="Start a project"
-                    icon={arrow}
+                    // icon={arrow}
                     link="/home#ContactSection"
                     href="false"
                   />
@@ -176,7 +179,10 @@ const StoryJourneySection = () => {
                   }}
                 >
                   <div className="stat-number">{item.value}</div>
-                  <p className="sub-description text-white mb-0">
+                  <p
+                    className="sub-description mb-0"
+                    style={{ color: '#CACACA' }}
+                  >
                     {item.label}
                   </p>
                 </div>

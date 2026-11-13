@@ -28,7 +28,7 @@ const NextProjects = () => {
     <div className="next-projects-section my-5 pt-5">
       <div className="container py-2 mt-3">
         <div className="row g-4">
-          <div className="sub-heading">Related Projects</div>
+          <div className="sub-heading">Creative Showcase</div>
           {portfolioItems.map((item) => (
             <div key={item.id} className={item.className}>
               <div className="card border-0 bg-transparent h-100 ">
