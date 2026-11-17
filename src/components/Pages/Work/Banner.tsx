@@ -1,4 +1,5 @@
 import HomeBanner from '../../../assets/home-bg.png';
+import Buttons from '../Common/Buttons';
 
 export default function Banner() {
   return (
@@ -26,12 +27,18 @@ export default function Banner() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-11 col-lg-9 col-xl-8">
               <h1 className="banner-title mb-4 white mt-5 pt-5">
-                Stories brought to life with ambitious brands and bold teams
+                Where Bold Ideas <br></br>Become Memorable Stories{' '}
               </h1>
               <p className="mx-auto mb-0 banner-subtitle">
-                From cinematic films to motion-led experiences, we create work
-                designed to move people and brands forward
+                Explore what we've created and imagine what we can create
+                together
               </p>
+              <Buttons
+                className="btn btn-outline-light px-4 py-3 mt-4 border-0 shadow-sm"
+                content="Start a Project"
+                // icon={arrow}
+                href="#contact"
+              />
             </div>
           </div>
         </div>

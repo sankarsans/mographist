@@ -21,9 +21,9 @@ const BannerServices = () => {
           <div className="col-12 col-md-7">
             <div className="ps-md-2">
               <h4
-                className="fw-bold mb-3"
+                className="fw-bold mb-2"
                 style={{
-                  fontSize: '1.125rem',
+                  fontSize: '1.5rem',
                   letterSpacing: '-0.02em',
                   color: '#000000',
                 }}
@@ -54,13 +54,11 @@ const BannerServices = () => {
                 >
                   <div
                     className="fw-bold mb-1"
-                    style={{ fontSize: '0.95rem', color: '#000000' }}
+                    style={{ fontSize: '1rem', color: '#000000' }}
                   >
                     Client
                   </div>
-                  <div
-                    style={{ fontSize: '0.9rem', color: 'rgba(66, 66, 66, 1)' }}
-                  >
+                  <div style={{ fontSize: '0.9rem', color: '#424242' }}>
                     Microsoft
                   </div>
                 </div>
@@ -68,11 +66,11 @@ const BannerServices = () => {
                 <div className="ps-4">
                   <div
                     className="fw-bold mb-1"
-                    style={{ fontSize: '0.95rem', color: '#000000' }}
+                    style={{ fontSize: '1rem', color: '#000000' }}
                   >
                     Services
                   </div>
-                  <div style={{ fontSize: '0.9rem', color: '#6c757d' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#424242' }}>
                     3D, VFX, Sound Design, AI, Direction, Motion Graphics
                   </div>
                 </div>

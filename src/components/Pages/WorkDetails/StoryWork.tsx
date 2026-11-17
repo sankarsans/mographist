@@ -1,35 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
+import behind from '../../../assets/behind.png';
 
 const storyData = [
   {
     id: '01',
     title: 'The Challenge',
     desc1:
-      "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+      'Cybersecurity is complex. The challenge was to communicate evolving digital threats and security solutions through a story that audiences could easily understand.',
     desc2:
-      'When Designers At Letraset And James Mosley, The Librarian At St Bride Printing Library',
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
+      'The goal was to simplify technical information without losing its depth, relevance or impact',
+    image: behind,
   },
   {
     id: '02',
     title: 'The Idea',
     desc1:
-      'Developing a distinct narrative vision that captures attention quickly while maintaining clarity across complex technical themes.',
+      'Transform abstract security concepts into a cinematic visual world, using motion, 3D and storytelling to make the invisible feel tangible.',
     desc2:
-      'Crafting conceptual visual metaphors through playful 3D staging, tactile textures, and dynamic spatial compositions.',
-    image:
-      'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop',
+      'Every visual element was designed to connect technology with human experiences and make the message more relatable',
+    image: behind,
   },
   {
     id: '03',
     title: 'The Impact',
     desc1:
-      'Delivered a memorable brand story that elevated engagement and established an emotional connection with enterprise decision-makers.',
+      'A visually engaging film designed to make complex cybersecurity ideas more accessible, memorable and relevant to a wider audience.',
     desc2:
-      'Demonstrated measurable reach across global campaigns and set a benchmark for future product showcases.',
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
+      'The result is a compelling visual narrative that strengthens understanding, builds awareness and leaves a lasting impression',
+    image: behind,
   },
 ];
 
@@ -121,13 +119,13 @@ const StoryWork = () => {
       {/* Outer Scroll Runway */}
       <div className="story-scroll-track" ref={trackRef}>
         {/* Pinned Sticky Section */}
-        <div className="story-sticky-viewport">
+        <div className="story-sticky-viewport my-4">
           <div
             className="behind-work-section bg-black-section w-100"
             style={{
               borderRadius: '80px',
               margin: '0rem 2rem',
-              padding: '4rem 0',
+              padding: '4rem 2rem',
               backgroundColor: '#0d0a14',
             }}
           >
@@ -140,7 +138,7 @@ const StoryWork = () => {
                       style={{
                         color: 'rgba(255, 134, 0, 1)',
                         fontSize: '0.85rem',
-                        fontWeight: 700,
+                        fontWeight: 600,
                         letterSpacing: '0.14em',
                         textTransform: 'uppercase',
                       }}
@@ -247,10 +245,10 @@ const StoryWork = () => {
                                     width: '15px',
                                     height: '15px',
                                     background: isActive
-                                      ? 'rgba(255, 134, 0, 1)'
+                                      ? '#FF8600'
                                       : 'linear-gradient(295deg, #111 0%, #666 100%)',
                                     border: isActive
-                                      ? '3px solid #753b0e'
+                                      ? '0px solid #753b0e'
                                       : '2px solid #444',
                                     boxShadow: isActive
                                       ? '0 0 14px rgba(255, 134, 0, 0.6)'
@@ -260,6 +258,7 @@ const StoryWork = () => {
                                       : 'scale(1)',
                                     transition:
                                       'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                                    // marginLeft: isActive ? '4px' : '0px',
                                   }}
                                 />
                               </div>

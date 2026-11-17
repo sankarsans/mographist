@@ -5,6 +5,7 @@ import NextProjects from './NextProjects';
 import ServiceProcess from './ServiceProcess';
 import WhatWeOffer from './WhatWeOffer';
 import { services } from './serviceData';
+import OtherServices from './OtherServices';
 
 export default function ServiceDetails() {
   const { id } = useParams();
@@ -26,6 +27,7 @@ export default function ServiceDetails() {
       <ServiceProcess />
       <NextProjects />
       <Contact />
+      <OtherServices />
     </div>
   );
 }

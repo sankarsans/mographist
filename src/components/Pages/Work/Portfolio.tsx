@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ProjectSearch from './ProjectSearch';
 
 const PortfolioGallery = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
   const categories = [
     'All',
     'Commercial Video',
@@ -109,35 +111,48 @@ const PortfolioGallery = () => {
     navigate(`/work-details/${workId}`);
   };
 
-  const filteredItems =
-    activeFilter === 'All'
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeFilter);
+  const filteredItems = portfolioItems.filter((item) => {
+    // 1. Check category match
+    const matchesCategory =
+      activeFilter === 'All' || item.category === activeFilter;
+
+    // 2. Check search text match (adjust 'item.title' if you want to search description/tags too)
+    const matchesSearch = item.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase().trim());
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="container py-5 mt-3">
-      <div className="d-flex flex-wrap gap-3 mb-4">
-        {categories.map((category) => {
-          const isActive = activeFilter === category;
-          return (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`btn px-4 py-2 fw-semibold borderColor backgroundColor"}`}
-              style={{
-                borderRadius: '12px',
-                fontSize: '0.9rem',
-                borderColor: isActive ? '#6f42c1' : 'rgba(227, 227, 227, 1)',
-                color: isActive ? '#6f42c1' : '#495057',
-                backgroundColor: isActive
-                  ? 'rgba(235, 231, 255, 1)'
-                  : 'rgba(246, 246, 246, 1)',
-              }}
-            >
-              {category}
-            </button>
-          );
-        })}
+      <div className="d-flex mb-4 justify-content-between">
+        <div className="d-flex gap-3">
+          {categories.map((category) => {
+            const isActive = activeFilter === category;
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`btn px-4 py-2 fw-semibold borderColor backgroundColor"}`}
+                style={{
+                  borderRadius: '12px',
+                  fontSize: '0.9rem',
+                  borderColor: isActive ? '#6f42c1' : 'rgba(227, 227, 227, 1)',
+                  color: isActive ? '#6f42c1' : '#212121',
+                  backgroundColor: isActive
+                    ? 'rgba(235, 231, 255, 1)'
+                    : 'rgba(246, 246, 246, 1)',
+                }}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
+        <div className="justify-content-end">
+          <ProjectSearch onSearch={(value) => setSearchTerm(value)} />
+        </div>
       </div>
 
       <div className="row g-4">
@@ -189,7 +204,8 @@ const PortfolioGallery = () => {
       {filteredItems.length === 0 && (
         <div className="text-center py-5">
           <p className="text-muted">
-            No portfolio items found in this category.
+            No portfolio items found in this category. Please try a different
+            category or search term.
           </p>
         </div>
       )}

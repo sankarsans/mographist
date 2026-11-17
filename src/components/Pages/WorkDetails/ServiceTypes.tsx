@@ -1,52 +1,56 @@
-import React, { useRef } from 'react';
-import serviceOne from '../../../assets/service-1.png';
+import { useRef } from 'react';
+import craft1 from '../../../assets/craft-1.png';
+import craft2 from '../../../assets/craft-2.png';
+import craft3 from '../../../assets/craft-3.png';
+import craft4 from '../../../assets/craft-4.png';
 import arrow from '../../../assets/arrow.png';
 
 const approachCards = [
   {
     id: 1,
-    title: 'Creative Direction',
+    title: 'Visual Development',
     description:
-      'Built the narrative, visual language and emotional tone of the film',
+      'Shaping the story through concepts, storyboards and visual exploration',
     bgColor: 'rgba(217, 242, 247, 1)',
     borderColor: 'rgba(95, 210, 233, 1)',
-    image: serviceOne,
+    image: craft1,
   },
   {
     id: 2,
-    title: 'Motion & 3D',
+    title: '3D & Motion Design',
     description:
-      'Created dynamic environments and motion systems that brought the digital world to life',
+      'Bringing complex digital concepts to life through dynamic 3D visuals',
     bgColor: 'rgba(250, 237, 237, 1)',
     borderColor: 'rgba(217, 145, 145, 1)',
-    image: serviceOne,
+    image: craft2,
   },
   {
     id: 3,
-    title: 'Sound & Atmosphere',
-    description: 'Designed sound and atmosphere to add tension',
+    title: 'VFX & Compositing',
+    description:
+      'Combining visual elements to create a seamless cinematic world',
     bgColor: 'rgba(241, 241, 241, 1)',
     borderColor: 'rgba(159, 159, 159, 1)',
-    image: serviceOne,
+    image: craft3,
   },
   {
     id: 4,
-    title: 'AI Integration',
+    title: 'Editing & Finishing',
     description:
-      'Used AI-assisted workflows to accelerate iterative concept development and asset generation',
+      'Refining every transition, colour and detail for a cohesive final film',
     bgColor: 'rgba(238, 236, 255, 1)',
     borderColor: 'rgba(147, 139, 215, 1)',
-    image: serviceOne,
+    image: craft4,
   },
-  {
-    id: 5,
-    title: 'Visual FX',
-    description:
-      'Engineered subtle volumetric lighting and particle layers to heighten immersion',
-    bgColor: 'rgba(232, 247, 238, 1)',
-    borderColor: 'rgba(140, 198, 150, 1)',
-    image: serviceOne,
-  },
+  // {
+  //   id: 5,
+  //   title: 'Visual FX',
+  //   description:
+  //     'Engineered subtle volumetric lighting and particle layers to heighten immersion',
+  //   bgColor: 'rgba(232, 247, 238, 1)',
+  //   borderColor: 'rgba(140, 198, 150, 1)',
+  //   image: serviceOne,
+  // },
 ];
 
 const ServiceTypes = () => {
@@ -120,7 +124,7 @@ const ServiceTypes = () => {
               </div>
 
               <h2 className="main-heading white">
-                Our Approach To Bring <br></br>Complexity To Life
+                The Craft Behind<br></br> Every Frame
               </h2>
             </div>
 
@@ -161,7 +165,7 @@ const ServiceTypes = () => {
                 className="flex-shrink-0 d-flex flex-column justify-content-between p-4"
                 style={{
                   width: '270px',
-                  minHeight: '380px',
+                  minHeight: '300px',
                   borderRadius: '32px',
                   backgroundColor: card.bgColor,
                   border: `1px solid ${card.borderColor}`,
@@ -173,7 +177,7 @@ const ServiceTypes = () => {
               >
                 {/* Media Preview / Stamp Container */}
                 <div
-                  className="w-100 rounded-4 overflow-hidden d-flex align-items-center justify-content-center p-4"
+                  className="w-100 rounded-4 overflow-hidden d-flex align-items-center justify-content-center px-4"
                   style={{
                     height: '170px',
                   }}
@@ -194,15 +198,15 @@ const ServiceTypes = () => {
                 <div className="text-center mt-auto">
                   <h5
                     className="fw-bold mb-2"
-                    style={{ fontSize: '1.5rem', letterSpacing: '-0.01em' }}
+                    style={{ fontSize: '1.25rem', letterSpacing: '-0.01em' }}
                   >
                     {card.title}
                   </h5>
                   <p
-                    className="mb-0 text-secondary"
+                    className="mb-0 text-secondary pb-3"
                     style={{
-                      fontSize: '0.875rem',
-                      lineHeight: '1.55',
+                      fontSize: '0.8rem',
+                      lineHeight: '1.5',
                       color: 'rgba(88, 89, 93, 1)',
                     }}
                   >

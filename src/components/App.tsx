@@ -7,6 +7,7 @@ import Work from './Pages/Work/Work';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import useScrollToHash from './Pages/Common/useScrollToHash';
 import WorkDetails from './Pages/WorkDetails/WorkDetails';
+import StartAProject from './Pages/StartaProject/StartaProject';
 
 export default function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/works" element={<Work />} />
         <Route path="/work-details/:id" element={<WorkDetails />} />
         <Route path="/service-details/:id" element={<ServiceDetails />} />
+        <Route path="/start-project" element={<StartAProject />} />
       </Routes>
 
       {!isHomePage && <Footer />}
