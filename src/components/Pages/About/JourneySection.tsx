@@ -157,8 +157,8 @@ const StoryJourneySection = () => {
                     className="btn btn-outline-light px-4 py-3 mt-2 border-0 shadow-sm"
                     content="Start a project"
                     // icon={arrow}
-                    link="/home#ContactSection"
                     href="false"
+                    link="/start-project"
                   />
                 </div>
               </div>

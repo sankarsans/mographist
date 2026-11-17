@@ -37,7 +37,8 @@ export default function Banner() {
                 className="btn btn-outline-light px-4 py-3 mt-4 border-0 shadow-sm"
                 content="Start a Project"
                 // icon={arrow}
-                href="#contact"
+                href="false"
+                link="/start-project"
               />
             </div>
           </div>

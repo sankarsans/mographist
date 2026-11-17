@@ -1,6 +1,5 @@
-import { useParams } from 'react-router-dom';
-import ContactSection from '../Common/ContactSection';
 import FAQSection from '../Home/FAQSection';
+import ContactSectionProject from './ContactSectionProject';
 
 export default function StartAProject() {
   //   const { id } = useParams();
@@ -17,7 +16,7 @@ export default function StartAProject() {
 
   return (
     <div>
-      <ContactSection />
+      <ContactSectionProject />
       <FAQSection />
       {/* <ServiceProcess />
       <NextProjects />
